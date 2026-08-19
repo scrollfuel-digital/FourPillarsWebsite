@@ -59,7 +59,7 @@ export const ROTATING_PHRASES = [
 ];
 
 export const HERO_TRUST_BADGES = [
-  { label: '15+ Years', sub: 'Experience', icon: Award },
+  { label: '20+ Years', sub: 'Experience', icon: Award },
   { label: '1500+ Families', sub: 'Happy Customers', icon: Users },
   { label: '100% Legal', sub: 'NMRDA Approved', icon: ShieldCheck },
 ];
@@ -75,7 +75,7 @@ export const STATS: StatItem[] = [
   },
   {
     value: 200,
-    suffix: '+',
+    suffix: '+ Acrs',
     label: 'Land Developed',
     icon: BarChart3,
     iconColor: '#5DCAA5',
@@ -90,14 +90,14 @@ export const STATS: StatItem[] = [
     iconBg: 'rgba(83,74,183,.18)',
   },
   {
-    value: 15,
-    suffix: ' Yr',
+    value: 20,
+    suffix: '+ Years',
     label: 'Years Experience',
     icon: Award,
     iconColor: '#EF9F27',
     iconBg: 'rgba(186,117,23,.18)',
   },
-];
+]
 
 export const FEATURES: FeatureCard[] = [
   {

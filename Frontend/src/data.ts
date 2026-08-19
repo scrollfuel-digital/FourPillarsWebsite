@@ -140,7 +140,7 @@ export const PROJECTS: Project[] = [
     acres: "Boutique Project",
     totalUnits: "28",
     status: "completed",
-    priceRange: "₹85 Lakh onward",
+    priceRange: "₹115 Lakh onward",
     image: shraddha,
     gallery: [shraddha, hero],
     coordinate: { x: 52, y: 40 },

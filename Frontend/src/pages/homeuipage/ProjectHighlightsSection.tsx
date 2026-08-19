@@ -29,7 +29,7 @@ const HIGHLIGHT_METRICS: MetricItem[] = [
     id: 'units-sold',
     value: 2000,
     suffix: '+',
-    label: 'Units & Plots Sold',
+    label: 'Flats & Plots Sold',
     description: 'Successfully delivered residential & commercial plot layouts across Nagpur.',
     icon: KeyRound,
     iconBg: 'bg-blue-500/15',
@@ -38,8 +38,8 @@ const HIGHLIGHT_METRICS: MetricItem[] = [
   },
   {
     id: 'years-exp',
-    value: 15,
-    suffix: '+',
+    value: 20,
+    suffix: '+ Years',
     label: 'Years of Experience',
     description: 'A decade-plus legacy of trustworthy real estate development & legal clarity.',
     icon: Award,
@@ -50,7 +50,7 @@ const HIGHLIGHT_METRICS: MetricItem[] = [
   {
     id: 'total-projects',
     value: 18,
-    suffix: '+',
+    suffix: '+ Projects',
     label: 'Total Projects',
     description: 'Signature townships and plotted developments in prime Nagpur growth corridors.',
     icon: Building2,
@@ -72,7 +72,7 @@ const HIGHLIGHT_METRICS: MetricItem[] = [
   {
     id: 'land-developed',
     value: 200,
-    suffix: '+ ',
+    suffix: '+ Acrs ',
     label: 'Land Developed',
     description: 'Gated communities with wide asphalt roads, underground drainage & green parks.',
     icon: MapPin,

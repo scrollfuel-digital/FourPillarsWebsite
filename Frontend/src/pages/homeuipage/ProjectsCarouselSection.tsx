@@ -143,16 +143,9 @@ export default function ProjectsCarouselSection({
                         {proj.name}
                       </h3>
 
-                      <div className="grid grid-cols-3 gap-2 text-center border-t border-white/20 pt-3">
-                        <div>
-                          <p className="text-[10px] uppercase tracking-wider text-white/70 font-semibold">
-                            Type
-                          </p>
-                          <p className="text-xs sm:text-sm font-bold mt-0.5">
-                            {typeSpec?.value || '—'}
-                          </p>
-                        </div>
-                        <div className="border-x border-white/20">
+                      <div className="text-center border-t border-white/20 pt-3">
+                       
+                        <div className="">
                           <p className="text-[10px] uppercase tracking-wider text-white/70 font-semibold">
                             Area
                           </p>
@@ -160,14 +153,7 @@ export default function ProjectsCarouselSection({
                             {areaSpec?.value || '—'}
                           </p>
                         </div>
-                        <div>
-                          <p className="text-[10px] uppercase tracking-wider text-white/70 font-semibold">
-                            Price
-                          </p>
-                          <p className="text-xs sm:text-sm font-bold mt-0.5">
-                            {proj.priceRange}
-                          </p>
-                        </div>
+                        
                       </div>
 
                       <div className="flex gap-3 pt-1">

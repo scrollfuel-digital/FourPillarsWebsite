@@ -130,7 +130,7 @@ const PROJECTS = [
         acres: "Boutique Project",
         totalUnits: "28",
         status: "completed",
-        priceRange: "₹85 Lakh onward",
+        priceRange: "₹115 Lakh onward",
         image: "/images/project_shraddha_png_1780484729700.png",
         gallery: ["/images/project_shraddha_png_1780484729700.png"],
         coordinate: { x: 52, y: 40 },
