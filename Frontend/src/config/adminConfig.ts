@@ -3,8 +3,8 @@ import { AdminProfile, BrandConfig } from "../types";
 export const DEFAULT_BRAND: BrandConfig = {
   companyName: "4 Pillars Realty",
   companyShort: "4Pillars Realty Admin",
-  tagline: "Control Panel",
-  pageTitle: "Management Suite",
+  tagline: "",
+  pageTitle: "Admin Panel",
   pageSubtitle:
     "Monitor customer inquiries, manage contact form submissions, and maintain project properties.",
 };

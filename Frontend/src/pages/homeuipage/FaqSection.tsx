@@ -19,10 +19,7 @@ export default function FaqSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200 text-[#003a78] text-xs font-bold uppercase tracking-wider mb-3">
-            <HelpCircle className="w-3.5 h-3.5 text-[#2b86c5]" />
-            <span>Got Questions?</span>
-          </div>
+          
           <h2 className="font-serif font-bold text-[#003a78] text-2xl sm:text-4xl tracking-tight mb-2">
             Frequently Asked Questions
           </h2>

@@ -53,15 +53,7 @@ export default function UpcomingProjectsSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-10">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-[#003a78] text-xs font-bold uppercase tracking-widest mb-3 shadow-xs"
-          >
-            <Compass className="w-3.5 h-3.5 text-[#2b86c5]" />
-            Upcoming Pre-Launch Portfolio
-          </motion.div>
+          
 
           <motion.h2
             initial={{ opacity: 0, y: 15 }}

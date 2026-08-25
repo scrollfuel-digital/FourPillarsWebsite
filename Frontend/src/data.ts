@@ -1,7 +1,7 @@
 import { Project, Blog, Notification } from "./types";
 import melbourne from "./assests/images/images/project_melbourne_png_1780484693295.png";
 import canberra from "./assests/images/images/project_canberra_png_1780484709897.png";
-import shraddha from "./assests/images/images/project_shraddha_png_1780484729700.png";
+import shraddha from "./assests/images/images/shradhabhaktis.png";
 import hero from "./assests/images/images/project_canberra_png_1780484709897.png";
 export const BRAND_COLORS = {
   primary: "#003B72", // Corporate Deep Blue
@@ -159,7 +159,7 @@ export const PROJECTS: Project[] = [
       "NMRDA Approved",
       "Wide Roads",
       "Underground Utilities",
-      "High ROI",
+      "High Return on Investment",
     ],
     specs: [
       { label: "Area", value: "9 Acres" },

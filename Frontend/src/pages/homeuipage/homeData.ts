@@ -75,8 +75,8 @@ export const STATS: StatItem[] = [
   },
   {
     value: 200,
-    suffix: '+ Acrs',
-    label: 'Land Developed',
+    suffix: '+ ',
+    label: 'Acres of Land Developed',
     icon: BarChart3,
     iconColor: '#5DCAA5',
     iconBg: 'rgba(15,110,86,.18)',
@@ -91,7 +91,7 @@ export const STATS: StatItem[] = [
   },
   {
     value: 20,
-    suffix: '+ Years',
+    suffix: '+ ',
     label: 'Years Experience',
     icon: Award,
     iconColor: '#EF9F27',
@@ -141,7 +141,7 @@ export const FEATURES: FeatureCard[] = [
     icon: BarChart3,
     iconColor: '#0F6E56',
     iconBg: '#E1F5EE',
-    tagLabel: 'High ROI',
+    tagLabel: 'High Return on Investment',
     tagBg: '#E1F5EE',
     tagColor: '#085041',
     accent: '#0F6E56',

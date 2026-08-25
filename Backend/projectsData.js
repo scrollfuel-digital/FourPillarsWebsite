@@ -145,7 +145,7 @@ const PROJECTS = [
         type: "plot",
         location: "Kharsoli, Nagpur",
         description: "Premium plotted development in Kharsoli with modern gated amenities.",
-        details: ["NMRDA Approved", "Wide Roads", "Underground Utilities", "High ROI"],
+        details: ["NMRDA Approved", "Wide Roads", "Underground Utilities", "High Return on Investment"],
         specs: [
             { label: "Area", value: "9 Acres" },
             { label: "Plots", value: "126+" },

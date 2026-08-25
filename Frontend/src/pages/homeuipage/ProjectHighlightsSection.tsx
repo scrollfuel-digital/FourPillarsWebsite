@@ -39,7 +39,7 @@ const HIGHLIGHT_METRICS: MetricItem[] = [
   {
     id: 'years-exp',
     value: 20,
-    suffix: '+ Years',
+    suffix: '+ ',
     label: 'Years of Experience',
     description: 'A decade-plus legacy of trustworthy real estate development & legal clarity.',
     icon: Award,
@@ -50,7 +50,7 @@ const HIGHLIGHT_METRICS: MetricItem[] = [
   {
     id: 'total-projects',
     value: 18,
-    suffix: '+ Projects',
+    suffix: '+',
     label: 'Total Projects',
     description: 'Signature townships and plotted developments in prime Nagpur growth corridors.',
     icon: Building2,
@@ -72,8 +72,8 @@ const HIGHLIGHT_METRICS: MetricItem[] = [
   {
     id: 'land-developed',
     value: 200,
-    suffix: '+ Acrs ',
-    label: 'Land Developed',
+    suffix: '+  ',
+    label: 'Acres of Land Developed',
     description: 'Gated communities with wide asphalt roads, underground drainage & green parks.',
     icon: MapPin,
     iconBg: 'bg-sky-500/15',
@@ -191,16 +191,7 @@ export default function ProjectHighlightsSection({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-50 border border-blue-200/80 text-[#003a78] text-xs font-bold uppercase tracking-widest mb-3"
-          >
-            <Sparkles className="w-3.5 h-3.5 text-[#2b86c5]" />
-            Track Record & Proven Impact
-          </motion.div>
-
+          
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

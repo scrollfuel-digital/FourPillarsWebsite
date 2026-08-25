@@ -13,6 +13,8 @@ import {
   Trees,
   CheckCircle2,
   Sparkles,
+  Droplets,
+  CloudRain,
 } from 'lucide-react';
 
 const COMMUNITY_AMENITIES = [
@@ -25,11 +27,36 @@ const COMMUNITY_AMENITIES = [
 ];
 
 const INFRASTRUCTURE_AMENITIES = [
-  { name: 'Wide Tar & Cement Roads', icon: Route, desc: '30ft to 40ft wide paved asphalt avenues' },
-  { name: 'Street Lighting', icon: Lightbulb, desc: 'Energy efficient LED solar lighting' },
-  { name: 'Sewerage Network', icon: Waves, desc: 'Underground sanitary drainage pipeline' },
-  { name: 'Electrical Infrastructure', icon: Zap, desc: 'Underground cabling & transformer points' },
-  { name: 'Open Green Spaces', icon: Trees, desc: 'Dedicated tree-lined open zones' },
+  {
+    name: 'Wide Internal Roads',
+    icon: Route,
+    desc: '30ft to 40ft wide well-paved internal roads',
+  },
+  {
+    name: 'LED Street Lighting',
+    icon: Lightbulb,
+    desc: 'Energy-efficient lighting across internal roads',
+  },
+  {
+    name: 'Underground Drainage',
+    icon: Waves,
+    desc: 'Planned underground drainage and sewerage network',
+  },
+  {
+    name: 'Electrical Infrastructure',
+    icon: Zap,
+    desc: 'Underground cabling with transformer provisions',
+  },
+  {
+    name: 'Submersible Water System',
+    icon: Droplets,
+    desc: 'Reliable groundwater supply through submersible pump',
+  },
+  {
+    name: 'Rainwater Management',
+    icon: CloudRain,
+    desc: 'Efficient stormwater drainage and rainwater management',
+  },
 ];
 
 export default function AmenitiesSection() {
@@ -43,10 +70,7 @@ export default function AmenitiesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-blue-100/80 border border-blue-200 text-[#003a78] text-xs font-semibold uppercase tracking-wider mb-3">
-            <Sparkles className="w-3.5 h-3.5 text-amber-500 fill-amber-500" />
-            <span>Modern Living Infrastructure</span>
-          </div>
+          
           <h2 className="font-serif font-bold text-[#003a78] text-2xl sm:text-4xl tracking-tight mb-3">
             Premium Lifestyle Amenities
           </h2>
@@ -111,7 +135,7 @@ export default function AmenitiesSection() {
                 02
               </div>
               <h3 className="font-serif font-bold text-xl text-[#003a78]">
-                Infrastructure Amenities
+                Infrastructure Facility
               </h3>
             </div>
 

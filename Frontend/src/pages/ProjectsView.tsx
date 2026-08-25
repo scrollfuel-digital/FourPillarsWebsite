@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { useProjects } from "../hooks/useProjects";
-
+import shradhabhaktis from "../assests/images/images/shradhabhaktis.png";
 export default function ProjectsView() {
   const navigate = useNavigate();
   const { openLeadModal, accessibilityTextSize, lightMode } = useOutletContext<{
@@ -14,7 +14,7 @@ export default function ProjectsView() {
 
   const { projects, loading } = useProjects();
 
-  if (loading) {
+  if (loading) {  
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="w-10 h-10 rounded-full border-4 border-t-blue-600 border-slate-200 animate-spin" />
@@ -25,12 +25,17 @@ export default function ProjectsView() {
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-35 pb-20">
       <Helmet>
-        <title>NMRDA Approved Projects & Plot Layouts in Nagpur | 4 Pillars Realty</title>
+        <title>
+          NMRDA Approved Projects & Plot Layouts in Nagpur | 4 Pillars Realty
+        </title>
         <meta
           name="description"
           content="Browse premier NMRDA approved plots, residential townships, and gated layouts across Besa, Shankarpur, Wardha Road, and South Nagpur."
         />
-        <meta property="og:title" content="NMRDA Approved Projects & Plot Layouts in Nagpur | 4 Pillars Realty" />
+        <meta
+          property="og:title"
+          content="NMRDA Approved Projects & Plot Layouts in Nagpur | 4 Pillars Realty"
+        />
         <meta
           property="og:description"
           content="Browse premier NMRDA approved plots, residential townships, and gated layouts across Besa, Shankarpur, Wardha Road, and South Nagpur."
@@ -47,10 +52,10 @@ export default function ProjectsView() {
           accessibilityTextSize === "sm"
             ? "text-2xl"
             : accessibilityTextSize === "lg"
-            ? "text-5xl"
-            : accessibilityTextSize === "xl"
-            ? "text-6xl"
-            : "text-4xl"
+              ? "text-5xl"
+              : accessibilityTextSize === "xl"
+                ? "text-6xl"
+                : "text-4xl"
         }`}
       >
         Our Projects
@@ -80,7 +85,7 @@ export default function ProjectsView() {
           >
             <div className="lg:w-1/2 aspect-video lg:aspect-auto h-72 lg:h-auto overflow-hidden relative">
               <img
-                src={proj.image}
+                src={shradhabhaktis}
                 alt={proj.name}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"
@@ -149,7 +154,7 @@ export default function ProjectsView() {
                   onClick={() =>
                     openLeadModal(
                       proj.slug,
-                      `Interested in schedules for ${proj.name}.`
+                      `Interested in schedules for ${proj.name}.`,
                     )
                   }
                   className="bg-[#003B72] hover:bg-[#1A67A4] text-white text-xs font-bold py-1.5 px-4 rounded-xl cursor-pointer"

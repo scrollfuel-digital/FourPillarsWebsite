@@ -294,7 +294,7 @@ export default function ProjectDetailView() {
                 src={images[current]}
                 alt={project.name}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover transition-all duration-500"
+                className="w-full h-full object-contain transition-all duration-500"
               />
 
               {/* Overlay */}

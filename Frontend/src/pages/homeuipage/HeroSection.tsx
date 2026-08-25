@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ROTATING_PHRASES, HERO_TRUST_BADGES } from "./homeData";
@@ -47,12 +46,10 @@ export default function HeroSection({
           preload="auto"
           className="w-full h-full object-cover object-center"
         />
+
+        {/* Dark overlay */}
         <div className="absolute inset-0 bg-black/55 z-10" />
       </motion.div>
-
-      {/* Hero blueprint grid overlay */}
-      <div className="absolute inset-0 z-10 bg-[linear-gradient(rgba(43,134,197,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(43,134,197,0.06)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none" />
-
       <motion.div
         className="max-w-7xl mx-auto px-4 pt-32 sm:px-6 lg:px-8 relative z-20 w-full"
         style={{ opacity: heroOpacity }}
