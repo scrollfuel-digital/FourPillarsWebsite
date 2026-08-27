@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { MapPin } from "lucide-react";
 import { useProjects } from "../hooks/useProjects";
-import shradhabhaktis from "../assests/images/images/shradhabhaktis.png";
+
 export default function ProjectsView() {
   const navigate = useNavigate();
   const { openLeadModal, accessibilityTextSize, lightMode } = useOutletContext<{
@@ -14,7 +14,7 @@ export default function ProjectsView() {
 
   const { projects, loading } = useProjects();
 
-  if (loading) {  
+  if (loading) {
     return (
       <div className="min-h-[60vh] flex items-center justify-center">
         <div className="w-10 h-10 rounded-full border-4 border-t-blue-600 border-slate-200 animate-spin" />
@@ -85,7 +85,7 @@ export default function ProjectsView() {
           >
             <div className="lg:w-1/2 aspect-video lg:aspect-auto h-72 lg:h-auto overflow-hidden relative">
               <img
-                src={shradhabhaktis}
+                src={proj.image}
                 alt={proj.name}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover transition-transform duration-700 hover:scale-105"

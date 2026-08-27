@@ -157,7 +157,7 @@ export default function ScheduleVisitSection() {
           </div>
 
           {/* TIMING STRIP */}
-          <div className="flex flex-wrap items-center gap-2 text-[20px] font-semibold text-[#8ba0be]">
+          <div className="flex flex-wrap items-center gap-2 text-[17px] font-semibold text-[#8ba0be]">
             <Clock className="w-5 h-5 text-[#7bbfff]" strokeWidth={2} />
             Visits available Mon–Sat &middot; 9 AM – 7 PM
           </div>
