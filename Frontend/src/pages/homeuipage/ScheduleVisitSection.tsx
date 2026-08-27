@@ -120,7 +120,7 @@ export default function ScheduleVisitSection() {
             </a>
 
             <a
-              href="mailto:info@4pillarsrealty.com"
+              href="mailto:4iconrealities@gmail.com"
               className="group flex items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.04] px-5 py-4 transition-all duration-300 hover:bg-[#2b86c5]/[0.15] hover:border-[#2b86c5]/40 hover:translate-x-1.5 shadow-lg"
             >
               <div className="w-12 h-12 shrink-0 rounded-xl flex items-center justify-center bg-gradient-to-br from-[#2b86c5]/30 to-[#2b86c5]/[0.1] text-[#7bbfff] border border-[#2b86c5]/25">
@@ -131,7 +131,7 @@ export default function ScheduleVisitSection() {
                   Email us
                 </div>
                 <div className="text-[0.95rem] font-bold text-[#f0f6ff]">
-                  info@4pillarsrealty.com
+                  4iconrealities@gmail.com
                 </div>
               </div>
               <ArrowRight
