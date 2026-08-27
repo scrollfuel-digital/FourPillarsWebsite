@@ -210,8 +210,8 @@ export default function ContactView() {
               </ContactRow>
               <div className="h-px bg-[#003A78]/8" />
               <ContactRow icon={<Mail className="w-4 h-4 text-[#2B86C5]" />} label="Electronic Enquiries">
-                <a href="mailto:info@4pillarsrealty.com" className="hover:text-[#C23A4A] transition-colors">
-                  info@4pillarsrealty.com
+                <a href="mailto:4iconrealities@gmail.com" className="hover:text-[#C23A4A] transition-colors">
+                  4iconrealities@gmail.com
                 </a>
               </ContactRow>
             </motion.div>
