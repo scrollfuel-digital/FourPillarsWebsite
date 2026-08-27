@@ -160,7 +160,7 @@ export default function Footer({ lightMode }: FooterProps) {
                   href="mailto:info@4pillarsrealty.com"
                   className="hover:text-blue-600 transition-all font-semibold text-slate-800 break-all"
                 >
-                  info@4pillarsrealty.com
+                  4iconrealities@gmail.com
                 </a>
               </li>
             </ul>
