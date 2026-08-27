@@ -25,19 +25,12 @@ import {
 } from "../controllers/postControllers.js";
 
 const router = express.Router();
-
-/* ==========================================================================
-   IMAGE UPLOAD API (Cloudinary)
-   ========================================================================== */
 // POST /api/admin/upload/image — Upload single cover image
 router.post("/upload/image", upload.single("image"), uploadSingleImage);
 
 // POST /api/admin/upload/gallery — Upload multiple gallery images
 router.post("/upload/gallery", upload.array("images", 10), uploadGalleryImages);
 
-/* ==========================================================================
-   INQUIRIES ADMIN API (Lead Modal / Form Inquiries)
-   ========================================================================== */
 // GET /api/admin/inquiries — Read all inquiries
 router.get("/inquiries", getAllInquiries);
 router.get("/form-submissions", getAllInquiries);
@@ -53,9 +46,8 @@ router.put("/inquiries/:id", updateInquiryStatus);
 router.delete("/inquiries/:id", deleteInquiry);
 
 
-/* ==========================================================================
-   CONTACT US FORM ADMIN API (Contact Us Submissions)
-   ========================================================================== */
+  //  CONTACT US FORM ADMIN API (Contact Us Submissions)
+
 // GET /api/admin/contacts — Read all contact us form entries
 router.get("/contacts", getAllContacts);
 
@@ -70,9 +62,6 @@ router.put("/contacts/:id", updateContactStatus);
 router.delete("/contacts/:id", deleteContact);
 
 
-/* ==========================================================================
-   PROJECTS ADMIN API (Full CRUD for Projects)
-   ========================================================================== */
 // GET /api/admin/projects — Read all projects
 router.get("/projects", getAllProjects);
 
