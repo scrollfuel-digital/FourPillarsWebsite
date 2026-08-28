@@ -27,11 +27,13 @@ app.use(
 
             "https://4-pillars-realty.vercel.app",
             "https://4-pillars-realty-r7dc.vercel.app",
+
             "https://fourpillars-t1er.onrender.com",
             "https://fourpillarswebsite.onrender.com",
-
-            /\.vercel\.app$/,
-            /\.onrender\.com$/
+            
+            "https://4pillarsrealty.com",
+            "https://www.4pillarsrealty.com"
+            
         ],
 
         credentials: true
