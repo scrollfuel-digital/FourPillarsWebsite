@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { BRAND_COLORS } from "../data";
-import Aboutusimage from "../assests/images/images/project_melbourne_png_1780484693295.png";
+import Aboutusimage from "../assests/images/images/aboutus.png";
 // Drop the founder photo (provided) into this same assets folder.
 import FounderImage from "../assests/images/images/founder-sachin-kale.jpeg";
 
@@ -264,12 +264,12 @@ export default function AboutView() {
                   lightMode ? "border-blue-100" : "border-blue-900/40"
                 }`}
               />
-              <div className="relative rounded-2xl overflow-hidden aspect-[4/3] shadow-2xl">
+              <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                 <img
                   src={Aboutusimage}
                   alt="4 Pillars Corporate Workspace"
                   referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover scale-100 group-hover:scale-105 transition-transform duration-700"
+                  className="w-full h-full object-cover p-2 scale-100 group-hover:scale-105 transition-transform duration-700"
                 />
                 {/* Overlay gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-blue-950/40 via-transparent to-transparent" />

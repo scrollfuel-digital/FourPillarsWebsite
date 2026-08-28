@@ -239,7 +239,6 @@ export const googleAuth = async (req, res) => {
             });
         }
 
-        // Simulated / direct Google login (dev mode — email+name passed directly)
         if (!email) {
             return res.status(400).json({ success: false, message: "Google token or email required" });
         }
