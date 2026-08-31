@@ -117,6 +117,7 @@ function FeatureItem({ card, index }: { card: FeatureCard; index: number }) {
           text-[13.5px]
           leading-[1.7]
           text-slate-500
+          text-start
         "
       >
         {card.desc}

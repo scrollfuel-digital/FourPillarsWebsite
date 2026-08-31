@@ -208,7 +208,7 @@ export default function AboutView() {
       </div>
 
       {/* ── 2. TEXT + IMAGE GRID ── */}
-      <div className="max-w-7xl mx-auto px-6 pb-24">
+      <div className="max-w-7xl mx-auto px-6 pb-24 text-justify">
         <div
           ref={grid.ref}
           className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center"
