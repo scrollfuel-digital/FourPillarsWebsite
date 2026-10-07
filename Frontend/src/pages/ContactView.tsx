@@ -10,9 +10,7 @@ import { PROJECTS } from "../data";
 import { Mail, Phone, MapPin, CheckCircle, Navigation } from "lucide-react";
 
 const contactValidationSchema = Yup.object().shape({
-  name: Yup.string()
-    .trim()
-    .required("Full name is required"),
+  name: Yup.string().trim().required("Full name is required"),
   email: Yup.string()
     .trim()
     .email("Enter a valid email address")
@@ -79,7 +77,9 @@ const Field = ({ label, error, focused, children }: FieldProps) => (
   <div className="group">
     <label
       className={`block text-[11px] font-semibold uppercase mb-1.5 tracking-[0.1em] transition-colors duration-200 ${
-        focused ? "text-[#C23A4A]" : "text-[#003A78]/45 group-focus-within:text-[#C23A4A]"
+        focused
+          ? "text-[#C23A4A]"
+          : "text-[#003A78]/45 group-focus-within:text-[#C23A4A]"
       }`}
     >
       {label}
@@ -118,14 +118,11 @@ export default function ContactView() {
     validationSchema: contactValidationSchema,
     onSubmit: async (values) => {
       const cleanPhone = values.phone.replace(/[\s-+]/g, "");
-      const ok = await submit(
-        { ...values, phone: cleanPhone },
-        "/contact"
-      );
+      const ok = await submit({ ...values, phone: cleanPhone }, "/contact");
       if (ok) {
         toast.success(
-          `Thank you ${values.name || 'Valued Client'}! A confirmation email has been sent to ${values.email}. Our team will contact you shortly.`,
-          'Message & Email Sent'
+          `Thank you ${values.name || "Valued Client"}! A confirmation email has been sent to ${values.email}. Our team will contact you shortly.`,
+          "Message & Email Sent",
         );
       }
     },
@@ -147,7 +144,10 @@ export default function ContactView() {
           name="description"
           content="Get in touch with 4 Pillars Realty. Visit our corporate office in Besa Square, New Nagpur or schedule a private site visit today."
         />
-        <meta property="og:title" content="Contact 4 Pillars Realty | Book a Site Visit in Nagpur" />
+        <meta
+          property="og:title"
+          content="Contact 4 Pillars Realty | Book a Site Visit in Nagpur"
+        />
         <meta
           property="og:description"
           content="Get in touch with 4 Pillars Realty. Visit our corporate office in Besa Square, New Nagpur or schedule a private site visit today."
@@ -195,22 +195,49 @@ export default function ContactView() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               whileHover={{ y: -4 }}
-              transition={{ duration: 0.5, delay: 0.15, ease: [0.22, 1, 0.36, 1] }}
+              transition={{
+                duration: 0.5,
+                delay: 0.15,
+                ease: [0.22, 1, 0.36, 1],
+              }}
               className="relative z-10 lg:-mt-94  mx-4 sm:mx-6 bg-white rounded-2xl p-6 sm:p-7 flex flex-col gap-5 shadow-[0_20px_50px_-15px_rgba(0,58,120,0.35)] ring-1 ring-[#003A78]/5 border-t-[3px] border-[#C23A4A]"
             >
-              <ContactRow icon={<MapPin className="w-4 h-4 text-[#2B86C5]" />} label="Corporate HQ Address">
-                Plot No. 52-71, Gouri Meadows II, Wing-B, Behind Indian Oil Petrol Pump, Besa Square, New Nagpur, Maharashtra
+              <ContactRow
+                icon={<MapPin className="w-4 h-4 text-[#2B86C5]" />}
+                label="Corporate HQ Address"
+              >
+                Plot No. 52-71, Gouri Meadows II, Wing-B, Behind Indian Oil
+                Petrol Pump, Besa Square, New Nagpur, Maharashtra
               </ContactRow>
               <div className="h-px bg-[#003A78]/8" />
-              <ContactRow icon={<Phone className="w-4 h-4 text-[#2B86C5]" />} label="Sales Helpline Desks">
+              <ContactRow
+                icon={<Phone className="w-4 h-4 text-[#2B86C5]" />}
+                label="Sales Helpline Desks"
+              >
                 <div className="flex flex-col gap-1">
-                  <a href="tel:+919373233777" className="hover:text-[#C23A4A] transition-colors">+91 93732 33777</a>
-                  <a href="tel:+919371612666" className="hover:text-[#C23A4A] transition-colors">+91 93716 12666</a>
+                  <a
+                    href="tel:+919373233777"
+                    className="hover:text-[#C23A4A] transition-colors"
+                  >
+                    +91 93732 33777
+                  </a>
+                  <a
+                    href="tel:+919371612666"
+                    className="hover:text-[#C23A4A] transition-colors"
+                  >
+                    +91 93716 12666
+                  </a>
                 </div>
               </ContactRow>
               <div className="h-px bg-[#003A78]/8" />
-              <ContactRow icon={<Mail className="w-4 h-4 text-[#2B86C5]" />} label="Electronic Enquiries">
-                <a href="mailto:4iconrealities@gmail.com" className="hover:text-[#C23A4A] transition-colors">
+              <ContactRow
+                icon={<Mail className="w-4 h-4 text-[#2B86C5]" />}
+                label="Electronic Enquiries"
+              >
+                <a
+                  href="mailto:4iconrealities@gmail.com"
+                  className="hover:text-[#C23A4A] transition-colors"
+                >
                   4iconrealities@gmail.com
                 </a>
               </ContactRow>
@@ -239,8 +266,12 @@ export default function ContactView() {
                     transition={{ duration: 0.4, delay: 0.15 + index * 0.07 }}
                     className="flex justify-between items-center gap-4 py-3"
                   >
-                    <span className="text-sm text-[#003A78] font-medium">{loc.point}</span>
-                    <span className="text-[11px] text-[#003A78]/45 font-medium whitespace-nowrap">{loc.distance}</span>
+                    <span className="text-sm text-[#003A78] font-medium">
+                      {loc.point}
+                    </span>
+                    <span className="text-[11px] text-[#003A78]/45 font-medium whitespace-nowrap">
+                      {loc.distance}
+                    </span>
                   </motion.div>
                 ))}
               </div>
@@ -269,7 +300,12 @@ export default function ContactView() {
                     <motion.div
                       initial={{ scale: 0 }}
                       animate={{ scale: 1 }}
-                      transition={{ delay: 0.15, type: "spring", stiffness: 200, damping: 14 }}
+                      transition={{
+                        delay: 0.15,
+                        type: "spring",
+                        stiffness: 200,
+                        damping: 14,
+                      }}
                       className="w-16 h-16 bg-[#2B86C5]/10 border border-[#2B86C5]/30 text-[#2B86C5] rounded-full flex items-center justify-center mx-auto mb-2"
                     >
                       <CheckCircle className="w-8 h-8" />
@@ -278,7 +314,8 @@ export default function ContactView() {
                       Your Inquiry Has Been Sent
                     </h4>
                     <p className="text-sm text-[#003A78]/60 max-w-md mx-auto leading-relaxed">
-                      Our advisory team will call you shortly to discuss your requirements.
+                      Our advisory team will call you shortly to discuss your
+                      requirements.
                     </p>
                     <button
                       onClick={handleReset}
@@ -309,7 +346,11 @@ export default function ContactView() {
 
                     <Field
                       label="Full Name"
-                      error={formik.touched.name && formik.errors.name ? formik.errors.name : undefined}
+                      error={
+                        formik.touched.name && formik.errors.name
+                          ? formik.errors.name
+                          : undefined
+                      }
                       focused={focusedField === "name"}
                     >
                       <input
@@ -330,7 +371,11 @@ export default function ContactView() {
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <Field
                         label="Email Address"
-                        error={formik.touched.email && formik.errors.email ? formik.errors.email : undefined}
+                        error={
+                          formik.touched.email && formik.errors.email
+                            ? formik.errors.email
+                            : undefined
+                        }
                         focused={focusedField === "email"}
                       >
                         <input
@@ -349,11 +394,17 @@ export default function ContactView() {
                       </Field>
                       <Field
                         label="Phone Number"
-                        error={formik.touched.phone && formik.errors.phone ? formik.errors.phone : undefined}
+                        error={
+                          formik.touched.phone && formik.errors.phone
+                            ? formik.errors.phone
+                            : undefined
+                        }
                         focused={focusedField === "phone"}
                       >
                         <div className="relative">
-                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#003A78]/45">+91</span>
+                          <span className="absolute left-4 top-1/2 -translate-y-1/2 text-sm text-[#003A78]/45">
+                            +91
+                          </span>
                           <input
                             type="tel"
                             name="phone"
@@ -373,7 +424,11 @@ export default function ContactView() {
 
                     <Field
                       label="Project of Interest"
-                      error={formik.touched.projectSlug && formik.errors.projectSlug ? formik.errors.projectSlug : undefined}
+                      error={
+                        formik.touched.projectSlug && formik.errors.projectSlug
+                          ? formik.errors.projectSlug
+                          : undefined
+                      }
                       focused={focusedField === "project"}
                     >
                       <select
@@ -388,14 +443,20 @@ export default function ContactView() {
                         className={`${inputBaseClass} appearance-none cursor-pointer`}
                       >
                         {PROJECTS.map((p) => (
-                          <option key={p.slug} value={p.slug}>{p.name}</option>
+                          <option key={p.slug} value={p.slug}>
+                            {p.name}
+                          </option>
                         ))}
                       </select>
                     </Field>
 
                     <Field
                       label="Your Message"
-                      error={formik.touched.message && formik.errors.message ? formik.errors.message : undefined}
+                      error={
+                        formik.touched.message && formik.errors.message
+                          ? formik.errors.message
+                          : undefined
+                      }
                       focused={focusedField === "message"}
                     >
                       <textarea
@@ -429,11 +490,17 @@ export default function ContactView() {
                     <motion.button
                       type="submit"
                       disabled={loading || formik.isSubmitting}
-                      whileHover={{ scale: loading || formik.isSubmitting ? 1 : 1.01 }}
-                      whileTap={{ scale: loading || formik.isSubmitting ? 1 : 0.99 }}
+                      whileHover={{
+                        scale: loading || formik.isSubmitting ? 1 : 1.01,
+                      }}
+                      whileTap={{
+                        scale: loading || formik.isSubmitting ? 1 : 0.99,
+                      }}
                       className="w-full bg-[#C23A4A] hover:bg-[#a82f3d] disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold py-4 rounded-xl transition-colors mt-1 text-sm tracking-wide"
                     >
-                      {loading || formik.isSubmitting ? "Sending…" : "Send Inquiry"}
+                      {loading || formik.isSubmitting
+                        ? "Sending…"
+                        : "Send Inquiry"}
                     </motion.button>
 
                     <p className="text-center text-[11px] text-[#003A78]/35 -mt-1">
@@ -444,6 +511,18 @@ export default function ContactView() {
               </AnimatePresence>
             </div>
           </motion.div>
+        </div>
+
+        <div className="w-full mt-16">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3722.717390029119!2d79.09317377503305!3d21.083946780579264!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bd4bfb91125d09f%3A0x73b07bba48b7f413!2s4%20Pillars%20Realty!5e0!3m2!1sen!2sin!4v1791373180994!5m2!1sen!2sin"
+            className="w-full h-[50px] sm:h-[50px] lg:h-[360px] border-0"
+            style={{ border: 0 }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            title="4 Pillars Realty Location"
+          />
         </div>
       </div>
     </div>

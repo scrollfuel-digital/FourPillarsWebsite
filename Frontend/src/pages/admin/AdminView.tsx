@@ -96,9 +96,6 @@ export default function AdminView() {
   const [projectForm, setProjectForm] =
     useState<ProjectFormState>(EMPTY_PROJECT_FORM);
 
-  // Admin profile & branding — swap DEFAULT_BRAND / DEFAULT_ADMIN_PROFILE in
-  // src/config/adminConfig.ts to rebrand, or wire loadStoredProfile()/onSave
-  // below to a real /admin/profile API endpoint.
   const [adminProfile, setAdminProfile] = useState<AdminProfile>(() => {
     const stored = loadStoredProfile();
     return {
