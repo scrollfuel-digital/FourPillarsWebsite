@@ -1,17 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { BRAND_COLORS } from "../data";
+
 import Aboutusimage from "../assests/images/images/aboutus.png";
-// Drop the founder photo (provided) into this same assets folder.
 import FounderImage from "../assests/images/images/founder-sachin-kale.jpeg";
+import ResidentialProjects from "@/components/ui/ResidentialProjects";
 
 interface AboutViewProps {
   lightMode: boolean;
   accessibilityTextSize: "sm" | "md" | "lg" | "xl";
 }
 
-// Custom hook for intersection observer animations
+// ========================================
+// INTERSECTION OBSERVER ANIMATION
+// ========================================
+
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);
@@ -19,6 +22,7 @@ function useInView(threshold = 0.15) {
   useEffect(() => {
     const el = ref.current;
     if (!el) return;
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -28,19 +32,25 @@ function useInView(threshold = 0.15) {
       },
       { threshold },
     );
+
     observer.observe(el);
+
     return () => observer.disconnect();
   }, [threshold]);
 
   return { ref, inView };
 }
 
+// ========================================
+// FOUR PILLARS CONTENT
+// ========================================
+
 const pillars = [
   {
     num: "01",
     title: "Legal Clarity",
     subtitle: "Pillar I",
-    desc: "Every plot layout undergoes exhaustive title searches and prior release letter verification — so your ownership is ironclad from day one.",
+    desc: "Every project should undergo appropriate legal due diligence, including title verification, relevant approvals and documentation checks. We believe buyers should have access to clear and accurate property information.",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -52,16 +62,16 @@ const pillars = [
         <path
           strokeLinecap="round"
           strokeLinejoin="round"
-          d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 003 10c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
+          d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.955 11.955 0 013 10c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z"
         />
       </svg>
     ),
   },
   {
     num: "02",
-    title: "Strategic Siting",
+    title: "Location Selection",
     subtitle: "Pillar II",
-    desc: "We stake positions only along South Nagpur's high-growth corridors — locations engineered for immediate valuation elevation and long-range appreciation.",
+    desc: "We focus on residential locations with relevant road connectivity, neighbourhood infrastructure and development potential to help buyers make informed property decisions.",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -87,7 +97,7 @@ const pillars = [
     num: "03",
     title: "Durable Infrastructure",
     subtitle: "Pillar III",
-    desc: "No shortcuts. Tar-cement roads, full LED grids, and engineered sewerage pipelines — built to serve generations, not just inspections.",
+    desc: "Planned roads, drainage, electrical infrastructure and other essential amenities are important considerations in creating functional residential developments.",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -106,9 +116,9 @@ const pillars = [
   },
   {
     num: "04",
-    title: "Pure Transparency",
+    title: "Complete Transparency",
     subtitle: "Pillar IV",
-    desc: "No hidden calculations. Every document is straightforward, every conversation is honest — absolute clarity at every step of your journey.",
+    desc: "We believe in clear communication about property details, pricing, approvals, documentation and the buying process, helping customers make decisions with confidence.",
     icon: (
       <svg
         viewBox="0 0 24 24"
@@ -132,9 +142,13 @@ const pillars = [
   },
 ];
 
+// ========================================
+// MAIN COMPONENT
+// ========================================
+
 export default function AboutView() {
-  const { lightMode, accessibilityTextSize } =
-    useOutletContext<AboutViewProps>();
+  const { lightMode } = useOutletContext<AboutViewProps>();
+
   const hero = useInView(0.1);
   const grid = useInView(0.1);
   const founder = useInView(0.1);
@@ -144,7 +158,7 @@ export default function AboutView() {
 
   return (
     <div
-      className={`min-h-screen select-none transition-colors duration-500 ${
+      className={`about-page min-h-screen select-none transition-colors duration-500 ${
         lightMode ? "bg-white" : "bg-[#080c14]"
       }`}
     >
@@ -152,105 +166,127 @@ export default function AboutView() {
         <title>
           About Us | 4 Pillars Realty Nagpur - Legal Clarity & Transparency
         </title>
+
         <meta
           name="description"
-          content="Learn about 4 Pillars Realty's 15+ years of real estate excellence in Nagpur. Discover our four pillars: Legal Clarity, Strategic Siting, Durable Infrastructure, and Pure Transparency."
+          content="Learn about 4 Pillars Realty, a Nagpur-based real estate company focused on residential plots, townships and apartments."
         />
+
         <meta
           property="og:title"
-          content="About Us | 4 Pillars Realty Nagpur - Legal Clarity & Transparency"
+          content="About Us | 4 Pillars Realty Nagpur"
         />
+
         <meta
           property="og:description"
-          content="Learn about 4 Pillars Realty's 15+ years of real estate excellence in Nagpur. Discover our four pillars: Legal Clarity, Strategic Siting, Durable Infrastructure, and Pure Transparency."
+          content="Discover our approach to legal clarity, location selection, durable infrastructure and complete transparency."
         />
+
         <meta property="og:type" content="website" />
       </Helmet>
-      {/* ── 1. HERO BANNER ── */}
-      <div
+
+      {/* ========================================
+          1. HERO SECTION
+      ======================================== */}
+
+      <section
         ref={hero.ref}
-        className="relative overflow-hidden pt-40 pb-20 px-6 text-center"
+        className="about-hero relative overflow-hidden pt-36 md:pt-40 pb-20 md:pb-24 px-6 text-center"
       >
-        {/* Ambient gradient blobs */}
+        {/* Background gradients */}
+
         <div
-          className={`absolute inset-0 pointer-events-none ${lightMode ? "opacity-30" : "opacity-20"}`}
+          className={`absolute inset-0 pointer-events-none ${
+            lightMode ? "opacity-30" : "opacity-20"
+          }`}
         >
           <div className="absolute -top-32 left-1/2 -translate-x-1/2 w-[700px] h-[700px] rounded-full bg-blue-500 blur-[120px]" />
+
           <div className="absolute top-10 right-10 w-[300px] h-[300px] rounded-full bg-indigo-400 blur-[90px]" />
         </div>
 
-        {/* Main headline — staggered word reveal */}
-        <h1
-          className={`relative font-extrabold leading-[1.05] tracking-tight transition-all duration-700 ${
-            hero.inView
-              ? "opacity-100 translate-y-0"
-              : "opacity-0 translate-y-8"
-          } ${lightMode ? "text-slate-900" : "text-white"}`}
-          style={{
-            fontSize: "clamp(2.6rem, 6vw, 5rem)",
-            transitionDelay: "220ms",
-          }}
-        >
-          Building Trust.{" "}
-          <span className="relative inline-block">
-            <span className="relative z-10 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-400">
-              Creating Communities.
+        <div className="relative z-10 max-w-5xl mx-auto">
+          <h1
+            className={`about-heading transition-all duration-700 ${
+              hero.inView
+                ? "opacity-100 translate-y-0"
+                : "opacity-0 translate-y-8"
+            } ${lightMode ? "text-slate-900" : "text-white"}`}
+          >
+            About 4 Pillars Realty
+            <span className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-400">
+              Building Trust Through Real Estate in Nagpur
             </span>
-            {/* Underline accent */}
-            <span
-              className={`absolute left-0 -bottom-1 h-[3px] rounded-full bg-gradient-to-r from-blue-500 to-indigo-400 transition-all duration-1000 ${
-                hero.inView ? "w-full" : "w-0"
-              }`}
-              style={{ transitionDelay: "800ms" }}
-            />
-          </span>
-        </h1>
-      </div>
+          </h1>
 
-      {/* ── 2. TEXT + IMAGE GRID ── */}
-      <div className="max-w-7xl mx-auto px-6 pb-24 text-justify">
-        <div
-          ref={grid.ref}
-          className="grid grid-cols-1 lg:grid-cols-2 gap-14 items-center"
-        >
-          {/* Text block */}
           <div
-            className={`transition-all duration-700  ${
+            className={`h-[3px] mx-auto mt-7 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400 transition-all duration-1000 ${
+              hero.inView ? "w-32" : "w-0"
+            }`}
+          />
+        </div>
+      </section>
+
+      {/* ========================================
+          MAIN CONTENT CONTAINER
+      ======================================== */}
+
+      <main className="max-w-7xl mx-auto px-6 pb-20 md:pb-24">
+        {/* ========================================
+            2. ABOUT INTRODUCTION
+        ======================================== */}
+
+        <section
+          ref={grid.ref}
+          className="about-section grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center"
+        >
+          {/* Text */}
+
+          <div
+            className={`transition-all duration-700 ${
               grid.inView
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 -translate-x-10"
             }`}
             style={{ transitionDelay: "100ms" }}
           >
+            <h2
+              className={`about-subheading ${
+                lightMode ? "text-slate-900" : "text-white"
+              }`}
+            >
+              Creating Better Real Estate Opportunities in Nagpur
+            </h2>
+
             <div
-              className={`space-y-5 text-[1.05rem] leading-[1.8] pb-2 ${
+              className={`about-content about-description mt-6 ${
                 lightMode ? "text-slate-600" : "text-slate-400"
               }`}
             >
               <p>
-                At 4 Pillars Realty, we believe every property should offer more
-                than space — it should create opportunities for better living
-                and lasting future growth.
+                4 Pillars Realty is a Nagpur-based real estate company focused
+                on developing residential plots, planned townships and premium
+                apartments.
               </p>
+
               <p>
-                We specialize in premium plotted developments, residential
-                townships, and luxury apartments across Nagpur. Our projects are
-                meticulously selected in emerging locations offering strong
-                connectivity, quality infrastructure, and excellent appreciation
-                potential.
+                We aim to make property buying more transparent, informed and
+                convenient through carefully selected locations, quality
+                infrastructure and customer-focused services.
               </p>
+
               <p>
-                Our commitment to transparency, customer satisfaction, and
-                quality development has made us a trusted name among homebuyers
-                and investors alike. Statutory compliance is our absolute,
-                non-negotiable priority.
+                Our projects are planned to meet the needs of homebuyers and
+                property investors looking for suitable residential
+                opportunities in Nagpur and its growing neighbourhoods.
               </p>
             </div>
           </div>
 
           {/* Image */}
+
           <div
-            className={`transition-all duration-700 pt-15 ${
+            className={`transition-all duration-700 ${
               grid.inView
                 ? "opacity-100 translate-x-0"
                 : "opacity-0 translate-x-10"
@@ -258,171 +294,176 @@ export default function AboutView() {
             style={{ transitionDelay: "280ms" }}
           >
             <div className="relative group">
-              {/* Decorative frame */}
               <div
-                className={`absolute -inset-3 rounded-3xl border transition-opacity duration-500 group-hover:opacity-100 opacity-60 ${
+                className={`absolute -inset-3 rounded-3xl border opacity-60 group-hover:opacity-100 transition-opacity duration-500 ${
                   lightMode ? "border-blue-100" : "border-blue-900/40"
                 }`}
               />
+
               <div className="relative rounded-2xl overflow-hidden aspect-[4/3]">
                 <img
                   src={Aboutusimage}
-                  alt="4 Pillars Corporate Workspace"
+                  alt="4 Pillars Realty Corporate Workspace"
                   referrerPolicy="no-referrer"
                   className="w-full h-full object-cover p-2 scale-100 group-hover:scale-105 transition-transform duration-700"
                 />
-                {/* Overlay gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/40 via-transparent to-transparent" />
-                {/* Badge */}
-                <div className="absolute bottom-5 left-5 right-5">
-                  <div
-                    className="inline-flex items-center gap-2 px-4 py-2 rounded-xl backdrop-blur-md text-white text-sm font-semibold"
-                    style={{
-                      background: "rgba(255,255,255,0.12)",
-                      border: "1px solid rgba(255,255,255,0.2)",
-                    }}
-                  >
-                    <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                    RERA Compliant · Nagpur Registered
-                  </div>
-                </div>
+
+                <div className="absolute inset-0 bg-gradient-to-t from-blue-950/40 via-transparent to-transparent pointer-events-none" />
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* ── 2B. FOUNDER INTRO ── */}
-        <div ref={founder.ref} className="mt-28">
+        {/* ========================================
+            3. FOUNDER SECTION
+        ======================================== */}
+
+        <section ref={founder.ref} className="about-section">
           <div
-            className={`relative overflow-hidden rounded-[32px] transition-all duration-700 delay-[80ms] ${
+            className={`relative overflow-hidden rounded-[28px] md:rounded-[32px] transition-all duration-700 ${
               founder.inView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-10"
             } ${lightMode ? "bg-slate-50" : "bg-[#0a0f1a]"}`}
           >
-            {/* Ambient accent, echoes the hero */}
+            {/* Background accent */}
+
             <div
-              className={`pointer-events-none absolute inset-0 ${lightMode ? "opacity-20" : "opacity-25"}`}
+              className={`pointer-events-none absolute inset-0 ${
+                lightMode ? "opacity-20" : "opacity-25"
+              }`}
             >
               <div className="absolute -bottom-40 -right-32 w-[420px] h-[420px] rounded-full bg-indigo-400 blur-[110px]" />
             </div>
 
-            <div className="relative grid grid-cols-1 lg:grid-cols-[0.62fr_1fr] items-stretch">
-              {/* Portrait — full-bleed within the card */}
-              <div className="relative min-h-[420px] lg:min-h-[520px]">
+            <div className="relative grid grid-cols-1 lg:grid-cols-[0.75fr_1fr] items-stretch">
+              {/* Founder image */}
+
+              <div className="relative min-h-[380px] sm:min-h-[450px] lg:min-h-[540px]">
                 <img
                   src={FounderImage}
                   alt="Sachin Kale, Founder of 4 Pillars Realty, Nagpur"
                   referrerPolicy="no-referrer"
                   className="absolute inset-0 w-full h-full object-cover object-top"
                 />
-                {/* <div
-                  className={`absolute inset-0 bg-gradient-to-t lg:bg-gradient-to-r ${
-                    lightMode
-                      ? "from-slate-50 via-slate-50/10 to-transparent lg:from-slate-50 lg:via-transparent lg:to-transparent"
-                      : "from-[#0a0f1a] via-[#0a0f1a]/10 to-transparent lg:from-[#0a0f1a] lg:via-transparent lg:to-transparent"
-                  }`}
-                /> */}
               </div>
 
-              {/* Intro copy */}
-              <div className="relative flex flex-col justify-center px-8 py-12 sm:px-12 lg:px-14 lg:py-16">
+              {/* Founder details */}
+
+              <div className="relative flex flex-col justify-center px-7 py-10 sm:px-12 sm:py-12 lg:px-14 lg:py-16">
                 <p
-                  className={`text-[11px] font-bold tracking-[0.25em] uppercase mb-4 ${lightMode ? "text-blue-500" : "text-blue-400"}`}
+                  className={`about-label mb-4 ${
+                    lightMode ? "text-blue-600" : "text-blue-400"
+                  }`}
                 >
-                  Meet the Founder
+                  Meet Our Founder
                 </p>
 
                 <h2
-                  className={`font-extrabold leading-tight mb-2 text-3xl sm:text-4xl ${
+                  className={`about-subheading ${
                     lightMode ? "text-slate-900" : "text-white"
                   }`}
                 >
                   Sachin Kale
                 </h2>
+
                 <p
-                  className={`text-sm font-semibold tracking-wide mb-7 ${lightMode ? "text-blue-600" : "text-blue-400"}`}
+                  className={`text-sm font-semibold tracking-wide mt-3 mb-6 ${
+                    lightMode ? "text-blue-600" : "text-blue-400"
+                  }`}
                 >
                   Founder &amp; Managing Director, 4 Pillars Realty
                 </p>
 
+                <p
+                  className={`about-description max-w-lg ${
+                    lightMode ? "text-slate-600" : "text-slate-400"
+                  }`}
+                >
+                  Founded by Sachin Kale, 4 Pillars Realty is guided by a simple
+                  belief: buying a home or residential plot should be a
+                  confident and well-informed decision. With a focus on
+                  transparent communication, legal clarity and customer
+                  satisfaction, Sachin Kale leads the company's approach to
+                  project selection, development planning and customer
+                  relationships.
+                </p>
+
+                <p
+                  className={`mt-5 font-serif italic text-lg ${
+                    lightMode ? "text-slate-800" : "text-slate-200"
+                  }`}
+                >
+                  — Sachin Kale
+                </p>
+
                 <blockquote
-                  className={`text-xl sm:text-2xl font-semibold italic leading-snug mb-7 ${
+                  className={`text-xl sm:text-2xl font-semibold italic leading-snug mt-7 ${
                     lightMode ? "text-slate-900" : "text-slate-100"
                   }`}
                 >
                   "A home should never be a gamble."
                 </blockquote>
-
-                <p
-                  className={`text-[15px] leading-[1.8] max-w-lg ${lightMode ? "text-slate-600" : "text-slate-400"}`}
-                >
-                  Sachin Kale founded 4 Pillars Realty in Nagpur out of a simple
-                  conviction — that buying a home or a plot shouldn't feel like
-                  a leap of faith. That belief still shapes how the company
-                  works today, from the first site visit to the day the keys
-                  change hands.
-                </p>
-
-                <p
-                  className={`mt-5 font-serif italic text-lg ${lightMode ? "text-slate-800" : "text-slate-200"}`}
-                >
-                  — Sachin Kale
-                </p>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
-        {/* ── 3. FOUR PILLARS ── */}
-        <div ref={pillarsSection.ref} className="mt-28">
-          {/* Section header */}
+        {/* ========================================
+            4. FOUR PILLARS
+        ======================================== */}
+
+        <section ref={pillarsSection.ref} className="about-section">
+          {/* Heading */}
+
           <div
-            className={`text-center mb-14 transition-all duration-700 ${
+            className={`about-section-header text-center transition-all duration-700 ${
               pillarsSection.inView
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 translate-y-6"
             }`}
           >
             <h2
-              className={`font-extrabold leading-tight ${
+              className={`about-heading ${
                 lightMode ? "text-slate-900" : "text-white"
               }`}
-              style={{ fontSize: "clamp(1.8rem, 3.5vw, 2.75rem)" }}
             >
-              The Four Pillars
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400">
-                of Our Operations
+              Our Real Estate
+              <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400">
+                Principles
               </span>
             </h2>
+
             <p
-              className={`mt-4 max-w-lg mx-auto text-base leading-relaxed ${
+              className={`about-section-description ${
                 lightMode ? "text-slate-500" : "text-slate-400"
               }`}
             >
               Every decision we make is anchored to these four principles — the
-              same ones that have guided us since day one.
+              same ones that guide our approach to real estate.
             </p>
           </div>
 
-          {/* Cards grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Pillar cards */}
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 lg:gap-6">
             {pillars.map((pillar, i) => {
               const isHovered = hoveredCard === i;
+
               return (
-                <div
-                  key={i}
+                <article
+                  key={pillar.num}
                   onMouseEnter={() => setHoveredCard(i)}
                   onMouseLeave={() => setHoveredCard(null)}
-                  className={`relative rounded-2xl overflow-hidden cursor-default transition-all duration-700 group ${
+                  className={`about-pillar-card relative rounded-2xl overflow-hidden cursor-default transition-all duration-700 group ${
                     pillarsSection.inView
                       ? "opacity-100 translate-y-0"
                       : "opacity-0 translate-y-10"
                   }`}
                   style={{ transitionDelay: `${i * 120 + 100}ms` }}
                 >
-                  {/* Card background */}
+                  {/* Background */}
+
                   <div
                     className={`absolute inset-0 transition-all duration-500 ${
                       lightMode
@@ -436,6 +477,7 @@ export default function AboutView() {
                   />
 
                   {/* Border */}
+
                   <div
                     className={`absolute inset-0 rounded-2xl border transition-colors duration-500 ${
                       lightMode
@@ -448,14 +490,17 @@ export default function AboutView() {
                     }`}
                   />
 
-                  {/* Glow on hover */}
+                  {/* Hover glow */}
+
                   {isHovered && (
-                    <div className="absolute inset-0 rounded-2xl shadow-[0_0_50px_rgba(59,130,246,0.35)]" />
+                    <div className="absolute inset-0 rounded-2xl shadow-[0_0_50px_rgba(59,130,246,0.25)]" />
                   )}
 
-                  {/* Content */}
-                  <div className="relative z-10 p-7 flex flex-col h-full min-h-[260px]">
+                  {/* Card content */}
+
+                  <div className="relative z-10 p-6 md:p-7 flex flex-col h-full min-h-[300px]">
                     {/* Icon */}
+
                     <div
                       className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-all duration-300 ${
                         isHovered
@@ -468,22 +513,24 @@ export default function AboutView() {
                       {pillar.icon}
                     </div>
 
-                    {/* Subtitle */}
+                    {/* Label */}
+
                     <p
-                      className={`text-[10px] font-bold tracking-[0.2em] uppercase mb-1 transition-colors duration-300 ${
+                      className={`about-label mb-2 transition-colors duration-300 ${
                         isHovered
                           ? "text-blue-200"
                           : lightMode
-                            ? "text-blue-500"
-                            : "text-blue-500"
+                            ? "text-blue-600"
+                            : "text-blue-400"
                       }`}
                     >
                       {pillar.subtitle}
                     </p>
 
                     {/* Title */}
-                    <h4
-                      className={`font-extrabold text-xl leading-snug mb-4 transition-colors duration-300 ${
+
+                    <h3
+                      className={`about-card-heading mb-4 transition-colors duration-300 ${
                         isHovered
                           ? "text-white"
                           : lightMode
@@ -492,11 +539,12 @@ export default function AboutView() {
                       }`}
                     >
                       {pillar.title}
-                    </h4>
+                    </h3>
 
                     {/* Description */}
+
                     <p
-                      className={`text-sm leading-relaxed transition-colors duration-300 ${
+                      className={`text-sm leading-[1.8] transition-colors duration-300 ${
                         isHovered
                           ? "text-blue-100"
                           : lightMode
@@ -507,21 +555,30 @@ export default function AboutView() {
                       {pillar.desc}
                     </p>
 
-                    {/* Large number watermark */}
+                    {/* Number watermark */}
+
                     <div
-                      className={`absolute bottom-4 right-5 text-6xl font-black font-mono leading-none select-none transition-all duration-300 ${
-                        isHovered ? "text-white/10" : "text-blue-500/8"
+                      className={`absolute bottom-4 right-5 text-6xl font-black font-mono leading-none select-none pointer-events-none transition-colors duration-300 ${
+                        isHovered ? "text-white/10" : "text-blue-500/10"
                       }`}
                     >
                       {pillar.num}
                     </div>
                   </div>
-                </div>
+                </article>
               );
             })}
           </div>
-        </div>
-      </div>
+        </section>
+
+        {/* ========================================
+            5. RESIDENTIAL PROJECTS
+        ======================================== */}
+
+        <section className="about-section">
+          <ResidentialProjects />
+        </section>
+      </main>
     </div>
   );
 }

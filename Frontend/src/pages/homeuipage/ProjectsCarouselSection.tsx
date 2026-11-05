@@ -326,8 +326,8 @@ export default function ProjectsCarouselSection({
         </motion.h2>
 
         <p className="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
-          Explore premier residential developments in Nagpur with full legal
-          clearance and ready infrastructure
+          Explore Premium Residential Projects in Nagpur with Full Legal
+          Clearance and Ready Infrastructure .
         </p>
       </motion.div>
 
@@ -356,23 +356,37 @@ export default function ProjectsCarouselSection({
           </div>
         )}
 
-        {/* Projects: Ongoing + Upcoming as separate sections */}
+        {/* Projects: Residential Plots, Apartments & Upcoming */}
         {!loading && !error && activeProjects.length > 0 && (
-          <div className="space-y-20">
-            {/* Ongoing Projects */}
-            {ongoingProjects.length > 0 && (
-              <div>
-                <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.2,
-                  }}
-                >
-                  {ongoingProjects.map((proj, idx) => (
+          <div className="space-y-24 md:space-y-32">
+            {/* Residential Plot Projects */}
+            <section className="space-y-10 md:space-y-12">
+              <div className="mb-10 md:mb-12">
+                <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold leading-tight text-[#003a78]">
+                  Residential Plot Projects 
+                </h3>
+                <p className="mt-4 text-sm md:text-base leading-8 text-gray-600 max-w-3xl">
+                  Explore premium residential plots in well-planned communities
+                  across Nagpur.
+                </p>
+              </div>
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {ongoingProjects
+                  .filter((proj) =>
+                    [
+                      "Canberra City",
+                      "Perth City",
+                      "Melbourne City Sector II",
+                    ].includes(proj.name),
+                  )
+                  .map((proj, idx) => (
                     <ProjectCard
                       key={proj.slug}
                       proj={proj}
@@ -381,27 +395,61 @@ export default function ProjectsCarouselSection({
                       onSelectProject={onSelectProject}
                     />
                   ))}
-                </motion.div>
+              </motion.div>
+            </section>
+
+            {/* Residential Apartment Projects */}
+            <section className="space-y-10 md:space-y-12">
+              <div className="mb-10 md:mb-12">
+                <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold leading-tight text-[#003a78]">
+                  Residential Apartment Projects 
+                </h3>
+                <p className="mt-4 text-sm md:text-base leading-8 text-gray-600 max-w-3xl">
+                  Discover premium apartments designed for comfortable modern
+                  family living.
+                </p>
               </div>
-            )}
+
+              <motion.div
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-10"
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+              >
+                {ongoingProjects
+                  .filter((proj) => proj.name === "Shraddha Bhakti Avenue")
+                  .map((proj, idx) => (
+                    <ProjectCard
+                      key={proj.slug}
+                      proj={proj}
+                      idx={idx}
+                      isUpcoming={false}
+                      onSelectProject={onSelectProject}
+                    />
+                  ))}
+              </motion.div>
+            </section>
 
             {/* Upcoming Projects */}
             {upcomingProjects.length > 0 && (
-              <div>
-                <SubSectionHeader
-                  title="Upcoming Projects"
-                  subtitle="Future launches & pre-launch opportunities"
-                />
+              <section className="space-y-10 md:space-y-12">
+                <div className="mb-10 md:mb-12">
+                  <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold leading-tight text-[#003a78]">
+                    Upcoming Residential Projects 
+                  </h3>
+                  <p className="mt-4 text-sm md:text-base leading-8 text-gray-600 max-w-3xl">
+                    Explore upcoming real estate developments and discover
+                    exciting future investment opportunities in Nagpur.
+                  </p>
+                </div>
 
                 <motion.div
-                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8"
+                  className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8 lg:gap-10"
                   initial={{ opacity: 0 }}
                   whileInView={{ opacity: 1 }}
                   viewport={{ once: true }}
-                  transition={{
-                    duration: 0.6,
-                    delay: 0.2,
-                  }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
                 >
                   {upcomingProjects.map((proj, idx) => (
                     <ProjectCard
@@ -413,7 +461,7 @@ export default function ProjectsCarouselSection({
                     />
                   ))}
                 </motion.div>
-              </div>
+              </section>
             )}
           </div>
         )}

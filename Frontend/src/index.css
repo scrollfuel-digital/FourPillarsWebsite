@@ -96,3 +96,165 @@ h4 {
   60%  { opacity: 0;   transform: scale(1.35); }
   100% { opacity: 0;   transform: scale(1.35); }
 }
+
+
+
+/* ========================================
+   ABOUT PAGE TYPOGRAPHY & SPACING
+======================================== */
+
+.about-page {
+  --about-section-gap: 96px;
+
+  font-family: "Inter", sans-serif;
+}
+
+/* Section spacing */
+
+.about-page .about-section {
+  margin-top: var(--about-section-gap);
+}
+
+/* Hero heading and section headings */
+
+.about-page .about-heading {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(30px, 3.2vw, 42px);
+  font-weight: 700;
+  line-height: 1.22;
+  letter-spacing: -0.5px;
+}
+
+/* Subheadings */
+
+.about-page .about-subheading {
+  font-family: "Playfair Display", serif;
+  font-size: clamp(25px, 2.7vw, 34px);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: -0.3px;
+}
+
+/* Card headings */
+
+.about-page .about-card-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 21px;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+/* Paragraphs */
+
+.about-page .about-description {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.8;
+  letter-spacing: 0;
+}
+
+/* Paragraph spacing */
+
+.about-page .about-content p + p {
+  margin-top: 20px;
+}
+
+/* Section descriptions */
+
+.about-page .about-section-description {
+  max-width: 680px;
+  margin: 20px auto 0;
+  font-size: 16px;
+  line-height: 1.8;
+}
+
+/* Section heading bottom spacing */
+
+.about-page .about-section-header {
+  margin-bottom: 48px;
+}
+
+/* Small labels */
+
+.about-page .about-label {
+  font-family: "Inter", sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* Pillar cards */
+
+.about-page .about-pillar-card {
+  min-height: 300px;
+}
+
+/* ========================================
+   MOBILE RESPONSIVENESS
+======================================== */
+
+@media (max-width: 768px) {
+  .about-page {
+    --about-section-gap: 64px;
+  }
+
+  .about-page .about-hero {
+    padding-top: 120px;
+    padding-bottom: 64px;
+  }
+
+  .about-page .about-heading {
+    font-size: 29px;
+    line-height: 1.3;
+  }
+
+  .about-page .about-subheading {
+    font-size: 25px;
+    line-height: 1.35;
+  }
+
+  .about-page .about-card-heading {
+    font-size: 19px;
+  }
+
+  .about-page .about-description {
+    font-size: 15px;
+    line-height: 1.8;
+  }
+
+  .about-page .about-section-description {
+    font-size: 15px;
+    line-height: 1.75;
+  }
+
+  .about-page .about-section-header {
+    margin-bottom: 32px;
+  }
+
+  .about-page .about-pillar-card {
+    min-height: auto;
+  }
+}
+
+/* Small mobile devices */
+
+@media (max-width: 480px) {
+  .about-page {
+    --about-section-gap: 56px;
+  }
+
+  .about-page .about-hero {
+    padding-top: 110px;
+    padding-bottom: 56px;
+  }
+
+  .about-page .about-heading {
+    font-size: 27px;
+  }
+
+  .about-page .about-subheading {
+    font-size: 23px;
+  }
+}

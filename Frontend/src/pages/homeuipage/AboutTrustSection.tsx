@@ -167,42 +167,42 @@ export default function AboutTrustSection() {
                 <strong style={{ color: "#003a78", fontWeight: 700 }}>
                   4 Pillars Reality
                 </strong>
-                , we believe every property should offer more than just space—it
-                should create opportunities for better living and future growth.
+                , we believe every property should offer more than just space —
+                it should create opportunities for better living and long-term
+                value.
               </p>
             </FadeUp>
 
             <FadeUp delay={220}>
               <p
                 style={{
-                  fontSize: 14.5,
+                  fontSize: 15.5,
                   lineHeight: 1.8,
-                  color: "#64748b",
+                  color: "#334155",
                   marginBottom: 14,
                   textAlign: "justify",
                 }}
               >
-                We specialize in premium plotted developments, residential
-                townships, and luxury apartments across Nagpur. Our projects are
-                carefully selected in emerging locations that offer strong
-                connectivity, quality infrastructure, and excellent appreciation
-                potential.
+                We specialize in residential plot developments, planned
+                townships, and premium luxury apartments across Nagpur. Our
+                projects are selected with a focus on location, connectivity,
+                infrastructure, and the needs of modern homebuyers.
               </p>
             </FadeUp>
 
             <FadeUp delay={280}>
               <p
                 style={{
-                  fontSize: 14.5,
+                  fontSize: 15.5,
                   lineHeight: 1.8,
-                  color: "#64748b",
+                  color: "#334155",
                   marginBottom: 24,
                   textAlign: "justify",
                 }}
               >
-                Our commitment to transparency, customer satisfaction, and
-                quality development has made us a trusted name among homebuyers
-                and investors.
+                We are committed to transparent communication, customer
+                satisfaction, and helping buyers make informed property
+                decisions through clear documentation and reliable guidance.
               </p>
             </FadeUp>
 

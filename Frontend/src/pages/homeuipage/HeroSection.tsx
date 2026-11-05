@@ -122,7 +122,7 @@ export default function HeroSection({
                 ease: [0.16, 1, 0.3, 1],
               }}
             >
-              <span>{ROTATING_PHRASES[rotatingIndex]}</span>
+              <h1>{ROTATING_PHRASES[rotatingIndex]}</h1>
             </motion.div>
 
             {/* ================= DESCRIPTION ================= */}

@@ -337,12 +337,16 @@ export const FAQS = [
     a: "Yes. Our projects are located in emerging growth corridors that offer strong future appreciation potential.",
   },
   {
-    q: "Can I schedule a site visit?",
-    a: "Absolutely. Our team can arrange a site visit based on your convenience.",
+    q: "How can I book a residential plot or apartment with 4 Pillars Realty?",
+    a: "Simply contact our team, explore your preferred project, schedule a site visit, and get assistance with pricing, documentation, and the booking process.",
   },
   {
-    q: "How do I get project details and pricing?",
-    a: "Simply contact our team through the enquiry form or call us directly.",
+    q: "Are the residential projects suitable for both homebuyers and property investors?",
+    a: "Yes, our residential plots and apartments offer options for families planning their dream home and individuals exploring real estate investment opportunities.",
+  },
+  {
+    q: "How can I check the price and availability of residential plots or apartments?",
+    a: "You can explore our projects and contact our team for the latest prices, availability, property details, and payment options.",
   },
 ];
 

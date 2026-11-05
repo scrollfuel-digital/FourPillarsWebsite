@@ -52,7 +52,7 @@ export interface VideoTestimonial {
 }
 
 export const ROTATING_PHRASES = [
-  'Residential Plots',
+  'Residential Plots in Nagpur',
   'Luxury Apartments',
   'Investment Opportunities',
   'Future Growth',

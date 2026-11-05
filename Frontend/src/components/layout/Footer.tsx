@@ -17,7 +17,6 @@ export default function Footer({ lightMode }: FooterProps) {
 
   const mainLinks = [
     { label: "Home", path: "/" },
-    { label: "Map Explorer", path: "/map" },
     { label: "Signature Projects", path: "/projects" },
     { label: "Enquire Desk", path: "/contact" },
   ];
