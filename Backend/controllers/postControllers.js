@@ -65,6 +65,7 @@ export const createProject = async (req, res) => {
     const {
       name,
       slug,
+      sanctioned,
       type,
       location,
       description,
@@ -100,6 +101,7 @@ export const createProject = async (req, res) => {
       type: type || "plot",
       location: location.trim(),
       description: description.trim(),
+      sanctioned: sanctioned.trim(),
       details: Array.isArray(details) ? details : [],
       specs: Array.isArray(specs) ? specs : [],
       highlights: Array.isArray(highlights) ? highlights : [],

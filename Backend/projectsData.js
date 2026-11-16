@@ -53,7 +53,7 @@ const PROJECTS = [
         name: "Canberra City",
         slug: "canberra-city",
         type: "plot",
-        location: "Wardha Road Corridor, Nagpur",
+        location: "97 NMRDA Sanctioned Residential Plots in a 6-Acre Layout | Wardha Road Corridor, Nagpur",
         description:
             "Spread across 6 acres with 97 residential plots, Canberra City combines modern infrastructure, open spaces, and investment potential in a well-planned residential community.",
         details: [
