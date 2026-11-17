@@ -1,4 +1,5 @@
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
+import type { Project } from "../types";
 import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
@@ -15,6 +16,7 @@ import {
 export default function ProjectDetailView() {
   const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
+
   const { openLeadModal, accessibilityTextSize, lightMode } = useOutletContext<{
     openLeadModal: (projectSlug: string, initialMessage?: string) => void;
     accessibilityTextSize: "sm" | "md" | "lg" | "xl";
@@ -23,53 +25,132 @@ export default function ProjectDetailView() {
 
   const { project, loading } = useProject(slug);
 
+  // Calculate default project price
   const defaultPrice = useMemo(() => {
     if (!project) return 3000000;
+
     return project.priceRange.includes("Lakh")
-      ? Math.floor(parseFloat(project.priceRange.replace(/[^0-9.]/g, "")) * 100000)
+      ? Math.floor(
+          parseFloat(project.priceRange.replace(/[^0-9.]/g, "")) * 100000,
+        )
       : 3000000;
   }, [project]);
 
-  // All hooks must be declared before any early returns
+  // All state hooks must be declared before the early return
   const [loanAmount, setLoanAmount] = useState<number>(0);
   const [interestRate, setInterestRate] = useState<number>(8.15);
   const [tenureYears, setTenureYears] = useState<number>(15);
   const [current, setCurrent] = useState(0);
 
-  // Sync loanAmount when defaultPrice resolves
-  useMemo(() => {
+  // Update loan amount when project price changes
+  useEffect(() => {
     setLoanAmount(Math.floor(defaultPrice * 0.8));
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [defaultPrice]);
 
+  // Loading check — only one early return
   if (loading || !project) {
     return (
-      <div className="min-h-[60vh] flex items-center justify-center">
-        <div className="w-10 h-10 rounded-full border-4 border-t-blue-600 border-slate-200 animate-spin" />
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#003a78] border-t-transparent" />
       </div>
     );
   }
 
+  const getProjectHeadings = (project: Project) => {
+    const name = project.name;
+
+    if (name === "Canberra City") {
+      return {
+        about: "About Canberra City Plots on Wardha Road",
+        highlights: "Canberra City Plot Highlights",
+        details: "Canberra City Project Details",
+        whyChoose: "Why Choose Canberra City Plots in Nagpur",
+        description:""
+      };
+    }
+
+    if (name === "Melbourne City Sector II") {
+      return {
+        about: "About Melbourne City Sector II Plots in Peotha",
+        highlights: "Melbourne City Sector II Plot Highlights",
+        details: "Melbourne City Sector II Project Details",
+        whyChoose: "Why Choose Melbourne City Sector II Plots in Nagpur",
+      };
+    }
+
+    if (name === "Shraddha Bhakti Avenue") {
+      return {
+        about: "About Shraddha Bhakti Avenue 3 BHK Apartments in Besa",
+        highlights: "Shraddha Bhakti Avenue Apartment Highlights",
+        details: "Shraddha Bhakti Avenue Project Details",
+        whyChoose: "",
+      };
+    }
+
+    if (name === "Perth City") {
+      return {
+        about: "About Perth City Plots in Kharsoli, Nagpur",
+        highlights: "Perth City Plot Highlights",
+        details: "Perth City Project Details",
+        whyChoose: "Why Choose Perth City Plots in Nagpur",
+      };
+    }
+
+    if (name === "Kharsoli Township") {
+      return {
+        about: "About Kharsoli Township Plots in Nagpur",
+        highlights: "Kharsoli Township Plot Highlights",
+        details: "Kharsoli Township Project Details",
+        whyChoose: "Why Choose Kharsoli Township Plots in Nagpur",
+      };
+    }
+
+    if (name === "Mega Township Project") {
+      return {
+        about: "About Mega Township Plots in Nagpur",
+        highlights: "Mega Township Plot Highlights",
+        details: "Mega Township Project Details",
+        whyChoose: "Why Choose Mega Township Plots in Nagpur",
+      };
+    }
+
+    // Default headings for other projects
+    return {
+      about: `About ${name} in ${project.mapHotspot}`,
+      highlights: `${name} Plot Highlights`,
+      details: `${name} Project Details`,
+      whyChoose: `Why Choose ${name} in Nagpur`,
+    };
+  };
+
+  const headings = getProjectHeadings(project);
+
+  // Project images
   const images = [
     project.image,
     ...(project.gallery || []).filter((g) => g !== project.image),
   ].filter(Boolean);
 
   const nextSlide = () => {
+    if (images.length === 0) return;
     setCurrent((prev) => (prev + 1) % images.length);
   };
 
   const prevSlide = () => {
+    if (images.length === 0) return;
     setCurrent((prev) => (prev - 1 + images.length) % images.length);
   };
 
+  // EMI Calculation
   const calculateEMI = () => {
     const P = loanAmount;
     const r = interestRate / 12 / 100;
     const n = tenureYears * 12;
 
     if (P === 0 || r === 0) return 0;
+
     const emi = (P * r * Math.pow(1 + r, n)) / (Math.pow(1 + r, n) - 1);
+
     return Math.floor(emi);
   };
 
@@ -77,6 +158,7 @@ export default function ProjectDetailView() {
     if (accessibilityTextSize === "sm") return "text-xl";
     if (accessibilityTextSize === "lg") return "text-4xl";
     if (accessibilityTextSize === "xl") return "text-5xl";
+
     return "text-3xl sm:text-4xl";
   };
 
@@ -84,13 +166,18 @@ export default function ProjectDetailView() {
     if (accessibilityTextSize === "sm") return "text-xs";
     if (accessibilityTextSize === "lg") return "text-base";
     if (accessibilityTextSize === "xl") return "text-lg";
+
     return "text-sm";
   };
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 select-none">
       <Helmet>
-        <title>{project ? `${project.name} | NMRDA Approved Layout in Nagpur - 4 Pillars Realty` : "Project Details | 4 Pillars Realty"}</title>
+        <title>
+          {project
+            ? `${project.name} | NMRDA Approved Layout in Nagpur - 4 Pillars Realty`
+            : "Project Details | 4 Pillars Realty"}
+        </title>
         <meta
           name="description"
           content={
@@ -101,7 +188,11 @@ export default function ProjectDetailView() {
         />
         <meta
           property="og:title"
-          content={project ? `${project.name} | NMRDA Approved Layout in Nagpur - 4 Pillars Realty` : "Project Details | 4 Pillars Realty"}
+          content={
+            project
+              ? `${project.name} | NMRDA Approved Layout in Nagpur - 4 Pillars Realty`
+              : "Project Details | 4 Pillars Realty"
+          }
         />
         <meta
           property="og:description"
@@ -139,9 +230,12 @@ export default function ProjectDetailView() {
             >
               {project.name}
             </h1>
-            <p className="text-slate-500 text-xs flex items-center gap-1.5 mt-1">
+            <h4 className="inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 mt-5 text-xs font-semibold text-green-700">
+              {project.sanctioned}
+            </h4>
+            <p className="text-slate-500 text-xs flex items-center gap-1.5 mt-3">
               <MapPin className="w-4 h-4 text-red-500 shrink-0" />{" "}
-              {project.location} | Development Zone: {project.mapHotspot}
+              {project.location} | {project.mapHotspot}
             </p>
           </div>
 
@@ -150,12 +244,16 @@ export default function ProjectDetailView() {
           {/* Slogans description */}
           <div>
             <h3
-              className={`font-serif font-bold text-lg mb-3 ${lightMode ? "text-slate-900" : "text-slate-100"}`}
+              className={`font-serif font-bold text-lg mb-3 ${
+                lightMode ? "text-slate-900" : "text-slate-100"
+              }`}
             >
-              Overview & Structural Masterplan
+              {headings.about}
             </h3>
             <p
-              className={`leading-relaxed ${lightMode ? "text-slate-650" : "text-slate-350"} ${getTextClass()}`}
+              className={`text-sm md:text-base font-['Plus_Jakarta_Sans'] font-medium leading-relaxed tracking-normal mt-2  ${
+                lightMode ? "text-slate-600" : "text-slate-300"
+              }`}
             >
               {project.description}
             </p>
@@ -169,10 +267,14 @@ export default function ProjectDetailView() {
                 : "bg-slate-950/40 border-slate-850"
             }`}
           >
-            <h4 className="font-serif font-semibold text-xs tracking-wider uppercase text-slate-400 mb-3 block">
-              Core Sizing Blueprints
-            </h4>
-            <ul className="space-y-2 text-xs">
+            <h3
+              className={`font-serif font-bold text-lg mb-3 ${
+                lightMode ? "text-slate-900" : "text-slate-100"
+              }`}
+            >
+              {headings.highlights}
+            </h3>
+            <ul className="space-y-2 text-sm">
               {project.details.map((det, index) => (
                 <li key={index} className="flex items-start gap-2.5">
                   <CheckCircle className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
@@ -189,9 +291,11 @@ export default function ProjectDetailView() {
           {/* Full Specifications table */}
           <div>
             <h3
-              className={`font-serif font-bold text-lg mb-3 ${lightMode ? "text-slate-900" : "text-slate-100"}`}
+              className={`font-serif font-bold text-lg mb-3 ${
+                lightMode ? "text-slate-900" : "text-slate-100"
+              }`}
             >
-              Technical Metadata
+              {headings.details}
             </h3>
             <div
               className={`border rounded-2xl overflow-hidden ${
@@ -209,7 +313,7 @@ export default function ProjectDetailView() {
                           : "border-slate-850 odd:bg-slate-900/30"
                       }`}
                     >
-                      <td className="px-4 py-3 font-semibold text-slate-500 font-mono text-[10px] uppercase w-1/3">
+                      <td className="px-4 py-3 font-semibold text-slate-500 font-mono text-[12px] uppercase w-1/3">
                         {spec.label}
                       </td>
                       <td
@@ -227,9 +331,11 @@ export default function ProjectDetailView() {
           {/* Location Key Highlights */}
           <div>
             <h3
-              className={`font-serif font-bold text-lg mb-3 ${lightMode ? "text-slate-900" : "text-slate-100"}`}
+              className={`font-serif font-bold text-lg mb-3 ${
+                lightMode ? "text-slate-900" : "text-slate-100"
+              }`}
             >
-              Project Key Highlights
+              {headings.whyChoose}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {project.highlights.map((item, idx) => (

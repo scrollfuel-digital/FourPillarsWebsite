@@ -11,6 +11,7 @@ export interface ProjectSpec {
 export interface ProjectFormState {
   name: string;
   slug: string;
+  sanctioned: string;
   type: "plot" | "apartment" | "township" | "upcoming";
   status: "ongoing" | "completed" | "upcoming";
   location: string;
@@ -229,7 +230,22 @@ export default function ProjectFormModal({
                   </button>
                 </div>
               </div>
+              {/* Sanctioned Status */}
+              <div>
+                <label className="block text-[11px] font-extrabold text-slate-300 uppercase mb-1">
+                  Sanctioned
+                </label>
 
+                <input
+                  type="text"
+                  value={form.sanctioned}
+                  onChange={(e) =>
+                    onFormChange({ ...form, sanctioned: e.target.value })
+                  }
+                  placeholder="e.g. NMRDA Sanctioned RL"
+                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3.5 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500 transition-all"
+                />
+              </div>
               {/* Category / Status / Price */}
               <div className="grid grid-cols-3 gap-3">
                 <div>

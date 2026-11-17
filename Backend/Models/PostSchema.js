@@ -10,7 +10,11 @@ const postSchema = new mongoose.Schema(
     id: { type: String, required: true, unique: true, trim: true },
     name: { type: String, required: true, trim: true },
     slug: { type: String, required: true, unique: true, trim: true },
-    sanctioned: { type: String, required: true, trim: true },
+    sanctioned: {
+      type: String,
+      default: "",
+      trim: true,
+    },
     type: {
       type: String,
       enum: ["plot", "apartment", "township", "upcoming"],

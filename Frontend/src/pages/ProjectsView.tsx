@@ -102,16 +102,16 @@ export default function ProjectsView() {
                   <MapPin className="w-3 h-3 text-red-500 inline" />
                   {proj.location}
                 </span>
-                <h3
-                  className={`text-xl font-serif font-bold tracking-tight mt-1.5 ${
+                <h2
+                  className={`text-3xl font-serif font-bold tracking-tight mt-1.5 ${
                     lightMode ? "text-slate-900" : "text-slate-100"
                   }`}
                 >
                   {proj.name}
-                </h3>
+                </h2>
                 <p
-                  className={`text-xs mt-3 leading-relaxed ${
-                    lightMode ? "text-slate-600" : "text-slate-400"
+                  className={`text-sm md:text-base font-['Plus_Jakarta_Sans'] font-medium leading-relaxed tracking-normal mt-2 line-clamp-2 ${
+                    lightMode ? "text-slate-600" : "text-slate-300"
                   }`}
                 >
                   {proj.description}

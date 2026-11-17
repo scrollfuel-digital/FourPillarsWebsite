@@ -64,9 +64,9 @@ export const PROJECTS: Project[] = [
     name: "Canberra City",
     slug: "canberra-city",
     type: "plot",
-    location: "Wardha Road Corridor, Nagpur",
+    location: "97 NMRDA Sanctioned Residential Plots in a 6-Acre Layout",
     description:
-      "Spread across 6 acres with 97 residential plots, Canberra City combines modern infrastructure, open spaces, and investment potential in a well-planned residential community.",
+      "Looking for NMRDA approved plots on Wardha Road, Nagpur? Canberra City by 4 Pillars Realty is a 6-acre residential plotted development with 97 plots, backed by an NMRDA Sanctioned Release Letter (RL). Located in the fast-growing Wardha Road corridor, it combines flat, elevated land, wide internal roads, underground electricity and individual water supply lines, making it a practical choice for home builders and long-term investors in Nagpur.",
     details: [
       "6 acres of perfectly flat, elevated prime residential land",
       "97 Residential Plots with NMRDA Sanctioned Release Letter (RL)",

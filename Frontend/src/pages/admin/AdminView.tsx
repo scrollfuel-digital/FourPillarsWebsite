@@ -31,6 +31,7 @@ type TabType = "inquiries" | "contacts" | "projects";
 const EMPTY_PROJECT_FORM: ProjectFormState = {
   name: "",
   slug: "",
+  sanctioned: "",
   type: "plot",
   status: "ongoing",
   location: "",
@@ -241,6 +242,7 @@ export default function AdminView() {
     setProjectForm({
       name: projectItem.name,
       slug: projectItem.slug || projectItem.id || "",
+      sanctioned: projectItem.sanctioned || "NMRDA",
       type: projectItem.type,
       status: projectItem.status || "ongoing",
       location: projectItem.location,
