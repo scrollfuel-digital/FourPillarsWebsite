@@ -26,7 +26,7 @@ export default function Footer({ lightMode }: FooterProps) {
     { name: "Canberra City", path: "/canberra-city" },
     { name: "Shraddha Bhakti Avenue", path: "/shraddha-bhakti-avenue" },
     {name:"Perth City" , path:"/perth-city"},
-    {name:"Kharsoli Township Project-Upcoming", path:"/kharsoli-township-project"},
+    {name:"Kharsoli Township Project-Upcoming", path:"/kharsoli-township"},
     {name:"Mega Township Project-Upcoming", path:"/mega-township-project"}
   ];
 
