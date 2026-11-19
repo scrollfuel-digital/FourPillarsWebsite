@@ -24,16 +24,16 @@ app.use(
         origin: [
             "http://localhost:5173",
             "http://localhost:5174",
-
+            "http://127.0.0.1:4173/",
             "https://4-pillars-realty.vercel.app",
             "https://4-pillars-realty-r7dc.vercel.app",
 
             "https://fourpillars-t1er.onrender.com",
             "https://fourpillarswebsite.onrender.com",
-            
+
             "https://4pillarsrealty.com",
             "https://www.4pillarsrealty.com"
-            
+
         ],
 
         credentials: true
