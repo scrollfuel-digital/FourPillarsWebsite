@@ -58,6 +58,7 @@ export default function ProjectDetailView() {
 
   const getProjectHeadings = (project: Project) => {
     const name = project.name;
+    const normalizedName = name.replace(/\s+Project$/i, "").trim();
 
     if (name === "Canberra City") {
       return {
@@ -65,7 +66,7 @@ export default function ProjectDetailView() {
         highlights: "Canberra City Plot Highlights",
         details: "Canberra City Project Details",
         whyChoose: "Why Choose Canberra City Plots in Nagpur",
-        description:""
+        description: "",
       };
     }
 
@@ -96,7 +97,7 @@ export default function ProjectDetailView() {
       };
     }
 
-    if (name === "Kharsoli Township") {
+    if (normalizedName === "Kharsoli Township") {
       return {
         about: "About Kharsoli Township Plots in Nagpur",
         highlights: "Kharsoli Township Plot Highlights",
@@ -172,7 +173,6 @@ export default function ProjectDetailView() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 select-none">
-     
       {/* Back button Row */}
       <button
         onClick={() => navigate("/projects")}
@@ -199,9 +199,9 @@ export default function ProjectDetailView() {
             >
               {project.name}
             </h1>
-            <h4 className="inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 mt-5 text-xs font-semibold text-green-700">
+            <h1 className="inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 mt-5  font-bold text-green-700">
               {project.sanctioned}
-            </h4>
+            </h1>
             <p className="text-slate-500 text-xs flex items-center gap-1.5 mt-3">
               <MapPin className="w-4 h-4 text-red-500 shrink-0" />{" "}
               {project.location} | {project.mapHotspot}
