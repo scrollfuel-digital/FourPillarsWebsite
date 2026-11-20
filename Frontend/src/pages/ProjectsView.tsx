@@ -24,24 +24,7 @@ export default function ProjectsView() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-35 pb-20">
-      <Helmet>
-        <title>
-          NMRDA Approved Projects & Plot Layouts in Nagpur | 4 Pillars Realty
-        </title>
-        <meta
-          name="description"
-          content="Browse premier NMRDA approved plots, residential townships, and gated layouts across Besa, Shankarpur, Wardha Road, and South Nagpur."
-        />
-        <meta
-          property="og:title"
-          content="NMRDA Approved Projects & Plot Layouts in Nagpur | 4 Pillars Realty"
-        />
-        <meta
-          property="og:description"
-          content="Browse premier NMRDA approved plots, residential townships, and gated layouts across Besa, Shankarpur, Wardha Road, and South Nagpur."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+   
       <motion.h1
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

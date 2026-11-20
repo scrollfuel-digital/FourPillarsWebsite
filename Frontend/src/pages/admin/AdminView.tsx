@@ -457,22 +457,7 @@ export default function AdminView() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-slate-100 font-sans pb-16">
-      <Helmet>
-        <title>Admin  | {DEFAULT_BRAND.companyName}</title>
-        <meta
-          name="description"
-          content={`Admin management suite for ${DEFAULT_BRAND.companyName} lead inquiries, contact submissions, and project catalog.`}
-        />
-        <meta
-          property="og:title"
-          content={`Admin | ${DEFAULT_BRAND.companyName}`}
-        />
-        <meta
-          property="og:description"
-          content={`Admin management suite for ${DEFAULT_BRAND.companyName} lead inquiries, contact submissions, and project catalog.`}
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+     
 
       <AdminHeader
         brand={DEFAULT_BRAND}

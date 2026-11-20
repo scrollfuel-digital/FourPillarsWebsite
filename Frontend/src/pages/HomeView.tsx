@@ -13,6 +13,7 @@ import TestimonialsSection from "./homeuipage/TestimonialsSection";
 import FaqSection from "./homeuipage/FaqSection";
 import ScheduleVisitSection from "./homeuipage/ScheduleVisitSection";
 
+
 interface HomeViewProps {
   openLeadModal: (projectSlug: string, initialMessage?: string) => void;
   accessibilityTextSize: "sm" | "md" | "lg" | "xl";
@@ -49,24 +50,7 @@ export default function HomeView() {
 
   return (
     <div className="flex flex-col bg-white">
-      <Helmet>
-        <title>
-          4 Pillars Realty | Premier NMRDA Approved Plots & Townships in Nagpur
-        </title>
-        <meta
-          name="description"
-          content="Explore 4 Pillars Realty's premium NMRDA-approved plots, residential townships, and luxury developments in Nagpur. Clear title, 100% legal compliance & high return on investment."
-        />
-        <meta
-          property="og:title"
-          content="4 Pillars Realty | Premier NMRDA Approved Plots & Townships in Nagpur"
-        />
-        <meta
-          property="og:description"
-          content="Explore 4 Pillars Realty's premium NMRDA-approved plots, residential townships, and luxury developments in Nagpur. Clear title, 100% legal compliance & high return on investment."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+     
       {/* 1. Hero Section (H1) */}
       <HeroSection
         openLeadModal={openLeadModal}
@@ -114,9 +98,7 @@ export default function HomeView() {
           onSelectProject={onSelectProject}
           textHeadingSize={textHeadingSize}
         />
-      </motion.div> 
-
-     
+      </motion.div>
 
       {/* 7. Premium Lifestyle Amenities */}
       <motion.div

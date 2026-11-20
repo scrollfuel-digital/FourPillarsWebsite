@@ -1,5 +1,5 @@
-import { lazy, Suspense } from "react";
-import { Routes, Route } from "react-router-dom";
+import { lazy, Suspense, useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import { ToastProvider } from "./context/ToastContext";
 import { AuthProvider } from "./context/AuthContext";
@@ -37,6 +37,29 @@ function LoadingScreen() {
 }
 
 export default function App() {
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      const isCtrl = e.ctrlKey || e.metaKey;
+      const isU =
+        (e.key && e.key.toLowerCase() === "u") ||
+        e.code === "KeyU" ||
+        e.keyCode === 85 ||
+        e.which === 85;
+      const isMacViewSource = e.metaKey && e.altKey && isU;
+
+      if ((isCtrl && isU) || isMacViewSource) {
+        window.location.reload();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown, true);
+    window.addEventListener("keydown", handleKeyDown, true);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown, true);
+      window.removeEventListener("keydown", handleKeyDown, true);
+    };
+  }, []);
+
   return (
     <AuthProvider>
       <ToastProvider>
@@ -49,6 +72,8 @@ export default function App() {
               <Route path="/" element={<HomeView />} />
               <Route path="/about" element={<AboutView />} />
               <Route path="/projects" element={<ProjectsView />} />
+              <Route path="/project" element={<Navigate to="/projects" replace />} />
+              <Route path="/projects/:slug" element={<ProjectDetailView />} />
               <Route path="/map" element={<InteractiveMap />} />
               <Route path="/blogs" element={<BlogsView />} />
               <Route path="/faqs" element={<FaqView />} />

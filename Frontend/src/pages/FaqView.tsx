@@ -34,19 +34,7 @@ export default function FaqView() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 select-none">
-      <Helmet>
-        <title>Frequently Asked Questions | NMRDA Plots & Compliance - 4 Pillars Realty</title>
-        <meta
-          name="description"
-          content="Find answers to common questions about NMRDA sanctioning, RL plots, property financing, legal documentation, and site visits with 4 Pillars Realty."
-        />
-        <meta property="og:title" content="Frequently Asked Questions | NMRDA Plots & Compliance - 4 Pillars Realty" />
-        <meta
-          property="og:description"
-          content="Find answers to common questions about NMRDA sanctioning, RL plots, property financing, legal documentation, and site visits with 4 Pillars Realty."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      
       {/* 1. Header Block */}
       <div className="text-center mb-16">
         <span className="text-xs font-bold text-red-500 uppercase tracking-widest font-mono flex justify-center items-center gap-1">

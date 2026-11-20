@@ -4,91 +4,54 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+    <!-- Google Analytics (GA4) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZJCV4Q5BD6"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-ZJCV4Q5BD6");
+    </script>
+
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="/logo.png" />
 
-    <!-- SEO Title -->
-    <title>4 Pillars Realty | Premium Plots & Apartments in Nagpur</title>
-
-    <!-- Primary SEO -->
-    <meta
-      name="description"
-      content="Discover premium residential plots, luxury apartments and township projects in Nagpur with 4 Pillars Realty. Explore Melbourne City Sector II, Canberra City and Shraddha Bhakti Avenue. Enquire today."
-    />
-    <meta name="robots" content="index, follow" />
+    <!-- Website information -->
     <meta name="author" content="4 Pillars Realty" />
     <meta name="theme-color" content="#ffffff" />
-
-    <!-- Canonical URL -->
-    <link rel="canonical" href="https://4pillarsrealty.com/" />
-
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="4 Pillars Realty" />
-    <meta
-      property="og:title"
-      content="4 Pillars Realty | Premium Real Estate Projects in Nagpur"
-    />
-    <meta
-      property="og:description"
-      content="Explore premium residential plots, luxury apartments and township projects in Nagpur by 4 Pillars Realty."
-    />
-    <meta property="og:url" content="https://4pillarsrealty.com/" />
-    <meta
-      property="og:image"
-      content="https://4pillarsrealty.com/og-image.jpg"
-    />
-    <meta property="og:image:alt" content="4 Pillars Realty Nagpur Projects" />
-
-    <!-- Twitter / X -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta
-      name="twitter:title"
-      content="4 Pillars Realty | Real Estate in Nagpur"
-    />
-    <meta
-      name="twitter:description"
-      content="Discover premium plots and apartments in Nagpur with 4 Pillars Realty."
-    />
-    <meta
-      name="twitter:image"
-      content="https://4pillarsrealty.com/og-image.jpg"
-    />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-
     <link
       href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
 
-    <!-- Website Schema -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "WebSite",
-        "name": "4 Pillars Realty",
-        "url": "https://4pillarsrealty.com/"
-      }
-    </script>
-
-    <!-- Google Analytics GA4 -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-ZJCV4Q5BD6"
-    ></script>
-
+    <!-- Auto-refresh on Ctrl+U / View Source key combination -->
     <script>
-      window.dataLayer = window.dataLayer || [];
+      (function () {
+        function handleKey(e) {
+          var isCtrl = e.ctrlKey || e.metaKey;
+          var isU =
+            (e.key && e.key.toLowerCase() === "u") ||
+            e.code === "KeyU" ||
+            e.keyCode === 85 ||
+            e.which === 85;
+          var isMacViewSource = e.metaKey && e.altKey && isU;
 
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-
-      gtag("js", new Date());
-      gtag("config", "G-ZJCV4Q5BD6");
+          if ((isCtrl && isU) || isMacViewSource) {
+            window.location.reload();
+          }
+        }
+        document.addEventListener("keydown", handleKey, true);
+        window.addEventListener("keydown", handleKey, true);
+      })();
     </script>
   </head>
 

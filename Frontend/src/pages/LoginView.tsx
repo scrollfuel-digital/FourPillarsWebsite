@@ -110,19 +110,7 @@ export default function LoginView() {
 
   return (
     <div className="min-h-screen bg-slate-950 text-white flex flex-col justify-center py-12 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-      <Helmet>
-        <title>Investor Portal Sign In | 4 Pillars Realty</title>
-        <meta
-          name="description"
-          content="Sign in to your 4 Pillars Realty investor portal to manage saved site visits, downloaded brochures, and plot availability."
-        />
-        <meta property="og:title" content="Investor Portal Sign In | 4 Pillars Realty" />
-        <meta
-          property="og:description"
-          content="Sign in to your 4 Pillars Realty investor portal to manage saved site visits, downloaded brochures, and plot availability."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+     
       {/* Ambient background glow circles */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-blue-900/15 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute -bottom-20 left-10 w-96 h-96 bg-amber-600/10 rounded-full blur-[120px] pointer-events-none" />

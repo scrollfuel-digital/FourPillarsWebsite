@@ -138,22 +138,7 @@ export default function ContactView() {
 
   return (
     <div className="bg-[#f2f2f2]">
-      <Helmet>
-        <title>Contact 4 Pillars Realty | Book a Site Visit in Nagpur</title>
-        <meta
-          name="description"
-          content="Get in touch with 4 Pillars Realty. Visit our corporate office in Besa Square, New Nagpur or schedule a private site visit today."
-        />
-        <meta
-          property="og:title"
-          content="Contact 4 Pillars Realty | Book a Site Visit in Nagpur"
-        />
-        <meta
-          property="og:description"
-          content="Get in touch with 4 Pillars Realty. Visit our corporate office in Besa Square, New Nagpur or schedule a private site visit today."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+  
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         {/* Header */}
         <motion.div

@@ -162,28 +162,7 @@ export default function AboutView() {
         lightMode ? "bg-white" : "bg-[#080c14]"
       }`}
     >
-      <Helmet>
-        <title>
-          About Us | 4 Pillars Realty Nagpur - Legal Clarity & Transparency
-        </title>
-
-        <meta
-          name="description"
-          content="Learn about 4 Pillars Realty, a Nagpur-based real estate company focused on residential plots, townships and apartments."
-        />
-
-        <meta
-          property="og:title"
-          content="About Us | 4 Pillars Realty Nagpur"
-        />
-
-        <meta
-          property="og:description"
-          content="Discover our approach to legal clarity, location selection, durable infrastructure and complete transparency."
-        />
-
-        <meta property="og:type" content="website" />
-      </Helmet>
+    
 
       {/* ========================================
           1. HERO SECTION

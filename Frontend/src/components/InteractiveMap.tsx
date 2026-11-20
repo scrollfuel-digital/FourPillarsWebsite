@@ -67,19 +67,7 @@ export default function InteractiveMap() {
       id="interactive-neighborhood-explorer"
       className="border px-4 py-6 sm:px-8 sm:py-8 lg:px-50 lg:py-10 shadow-2xl relative overflow-hidden transition-all duration-300 bg-white border-slate-200 text-slate-800"
     >
-      <Helmet>
-        <title>Neighborhood & Spatial Explorer | South Nagpur Expansion Map | 4 Pillars Realty</title>
-        <meta
-          name="description"
-          content="Interactively explore South Nagpur growth corridors, Besa Square, and Wardha Road plot layout maps with 4 Pillars Realty."
-        />
-        <meta property="og:title" content="Neighborhood & Spatial Explorer | South Nagpur Expansion Map | 4 Pillars Realty" />
-        <meta
-          property="og:description"
-          content="Interactively explore South Nagpur growth corridors, Besa Square, and Wardha Road plot layout maps with 4 Pillars Realty."
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+      
       <div className="absolute top-0 right-0 w-40 h-40 sm:w-64 sm:h-64 lg:w-96 lg:h-96 bg-blue-600/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-40 h-40 sm:w-64 sm:h-64 lg:w-96 lg:h-96 bg-red-600/5 rounded-full blur-3xl pointer-events-none" />
 

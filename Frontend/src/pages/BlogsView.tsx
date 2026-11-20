@@ -31,38 +31,7 @@ export default function BlogsView() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 select-none">
-      <Helmet>
-        <title>
-          {selectedBlog
-            ? `${selectedBlog.title} | 4 Pillars Realty Knowledge Hub`
-            : "Real Estate Insights & Market Handbooks | 4 Pillars Realty Nagpur"}
-        </title>
-        <meta
-          name="description"
-          content={
-            selectedBlog
-              ? selectedBlog.summary
-              : "Stay informed with real estate market trends, investment guides, and property buying handbooks in Nagpur from 4 Pillars Realty."
-          }
-        />
-        <meta
-          property="og:title"
-          content={
-            selectedBlog
-              ? `${selectedBlog.title} | 4 Pillars Realty Knowledge Hub`
-              : "Real Estate Insights & Market Handbooks | 4 Pillars Realty Nagpur"
-          }
-        />
-        <meta
-          property="og:description"
-          content={
-            selectedBlog
-              ? selectedBlog.summary
-              : "Stay informed with real estate market trends, investment guides, and property buying handbooks in Nagpur from 4 Pillars Realty."
-          }
-        />
-        <meta property="og:type" content="article" />
-      </Helmet>
+     
       
       {selectedBlog ? (
         // Detailed Blog Reader layout

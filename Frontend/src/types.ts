@@ -2,7 +2,7 @@ export interface Project {
   id: string;
   name: string;
   slug: string;
-  sanctioned: string;
+  sanctioned?: string;
   type: "plot" | "apartment" | "township" | "upcoming";
   location: string;
   description: string;

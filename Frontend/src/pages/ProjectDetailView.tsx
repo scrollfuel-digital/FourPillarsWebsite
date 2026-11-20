@@ -172,38 +172,7 @@ export default function ProjectDetailView() {
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 select-none">
-      <Helmet>
-        <title>
-          {project
-            ? `${project.name} | NMRDA Approved Layout in Nagpur - 4 Pillars Realty`
-            : "Project Details | 4 Pillars Realty"}
-        </title>
-        <meta
-          name="description"
-          content={
-            project
-              ? `Explore ${project.name} located in ${project.location}. ${project.description.slice(0, 150)}... Sizing: ${project.acres !== "Boutique Project" ? `${project.acres} Acres` : "Boutique layout"}. Book a private site visit today.`
-              : "View premier NMRDA approved plot layouts and residential townships in Nagpur with 4 Pillars Realty."
-          }
-        />
-        <meta
-          property="og:title"
-          content={
-            project
-              ? `${project.name} | NMRDA Approved Layout in Nagpur - 4 Pillars Realty`
-              : "Project Details | 4 Pillars Realty"
-          }
-        />
-        <meta
-          property="og:description"
-          content={
-            project
-              ? `Explore ${project.name} located in ${project.location}. ${project.description.slice(0, 150)}...`
-              : "View premier NMRDA approved plot layouts and residential townships in Nagpur with 4 Pillars Realty."
-          }
-        />
-        <meta property="og:type" content="website" />
-      </Helmet>
+     
       {/* Back button Row */}
       <button
         onClick={() => navigate("/projects")}
