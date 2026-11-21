@@ -53,9 +53,9 @@ export interface VideoTestimonial {
 
 export const ROTATING_PHRASES = [
   'Residential Plots in Nagpur',
-  'Luxury Apartments',
-  'Investment Opportunities',
-  'Future Growth',
+  // 'Luxury Apartments',
+  // 'Investment Opportunities',
+  // 'Future Growth',
 ];
 
 export const HERO_TRUST_BADGES = [

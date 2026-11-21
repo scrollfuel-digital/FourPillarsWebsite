@@ -31,15 +31,6 @@ export default function HeroSection({
   const [addressModalOpen, setAddressModalOpen] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
 
-  // Rotating phrases
-  useEffect(() => {
-    const interval = window.setInterval(() => {
-      setRotatingIndex((prev) => (prev + 1) % ROTATING_PHRASES.length);
-    }, 3200);
-
-    return () => window.clearInterval(interval);
-  }, []);
-
   return (
     <section
       ref={heroRef}
@@ -109,20 +100,9 @@ export default function HeroSection({
                 justify-center
                 tracking-tight
               "
-              initial={{
-                opacity: 0,
-                y: 18,
-              }}
-              animate={{
-                opacity: 1,
-                y: 0,
-              }}
-              transition={{
-                duration: 0.5,
-                ease: [0.16, 1, 0.3, 1],
-              }}
+             
             >
-              <h1>{ROTATING_PHRASES[rotatingIndex]}</h1>
+              <h1>Residential Plots in Nagpur</h1>
             </motion.div>
 
             {/* ================= DESCRIPTION ================= */}

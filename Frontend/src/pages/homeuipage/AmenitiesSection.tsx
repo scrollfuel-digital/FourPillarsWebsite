@@ -1,4 +1,4 @@
-import { motion } from 'motion/react';
+import { motion } from "motion/react";
 import {
   DoorOpen,
   Leaf,
@@ -15,53 +15,80 @@ import {
   Sparkles,
   Droplets,
   CloudRain,
-} from 'lucide-react';
+} from "lucide-react";
 
 const COMMUNITY_AMENITIES = [
-  { name: 'European Style Entrance Gate', icon: DoorOpen, desc: 'Grand entry arch with security booth' },
-  { name: 'Landscaped Gardens', icon: Leaf, desc: 'Manicured green spaces & lawns' },
-  { name: 'Children\'s Play Area', icon: Smile, desc: 'Safe playground zone for kids' },
-  { name: 'Jogging Track', icon: Footprints, desc: 'Paved walkways for health & fitness' },
-  { name: 'Gazebos', icon: Flower2, desc: 'Relaxing shaded outdoor seating' },
-  { name: 'Outdoor Seating Areas', icon: Users, desc: 'Community sit-outs & gathering spots' },
+  {
+    name: "European-Style Entrance Gate with Security Booth",
+    icon: DoorOpen,
+    desc: "Grand entry arch with security booth",
+  },
+  {
+    name: "Landscaped Green Gardens & Open Spaces",
+    icon: Leaf,
+    desc: "Manicured green spaces & lawns",
+  },
+  {
+    name: "Dedicated Children's Play Area",
+    icon: Smile,
+    desc: "Safe playground zone for kids",
+  },
+  {
+    name: "Jogging & Walking Track",
+    icon: Footprints,
+    desc: "Paved walkways for health & fitness",
+  },
+  {
+    name: "Landscaped Gazebos & Relaxation Spaces",
+    icon: Flower2,
+    desc: "Relaxing shaded outdoor seating",
+  },
+  {
+    name: "Outdoor Community Seating Areas",  
+    icon: Users,
+    desc: "Community sit-outs & gathering spots",
+  },
 ];
 
 const INFRASTRUCTURE_AMENITIES = [
   {
-    name: 'Wide Internal Roads',
+    name: "Well-Planned Wide Internal Roads",
     icon: Route,
-    desc: '30ft to 40ft wide well-paved internal roads',
+    desc: "30ft to 40ft wide well-paved internal roads",
   },
   {
-    name: 'LED Street Lighting',
+    name: "Energy-Efficient LED Street Lighting",
     icon: Lightbulb,
-    desc: 'Energy-efficient lighting across internal roads',
+    desc: "Energy-efficient lighting across internal roads",
   },
   {
-    name: 'Underground Drainage',
+    name: "Underground Drainage & Sewage System",
     icon: Waves,
-    desc: 'Planned underground drainage and sewerage network',
+    desc: "Planned underground drainage and sewerage network",
   },
   {
-    name: 'Electrical Infrastructure',
+    name: "Reliable Electrical Infrastructure",
     icon: Zap,
-    desc: 'Underground cabling with transformer provisions',
+    desc: "Underground cabling with transformer provisions",
   },
   {
-    name: 'Submersible Water System',
+    name: "Submersible Water Supply System",
     icon: Droplets,
-    desc: 'Reliable groundwater supply through submersible pump',
+    desc: "Reliable groundwater supply through submersible pump",
   },
   {
-    name: 'Rainwater Management',
+    name: "Rainwater Management & Drainage System",
     icon: CloudRain,
-    desc: 'Efficient stormwater drainage and rainwater management',
+    desc: "Efficient stormwater drainage and rainwater management",
   },
 ];
 
 export default function AmenitiesSection() {
   return (
-    <section className="py-20 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden" id="lifestyle-amenities">
+    <section
+      className="py-20 bg-slate-50 border-b border-slate-200/80 relative overflow-hidden"
+      id="lifestyle-amenities"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -70,12 +97,15 @@ export default function AmenitiesSection() {
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          
           <h2 className="font-serif font-bold text-[#003a78] text-2xl sm:text-4xl tracking-tight mb-3">
-            Premium Lifestyle Amenities
+            Premium Amenities for Modern Living
+            <br />
+            in Nagpur
           </h2>
           <p className="text-slate-600 text-sm sm:text-base">
-            Designed to enhance everyday living with thoughtfully planned facilities.
+            Experience comfortable living with thoughtfully designed lifestyle
+            amenities and modern infrastructure across our residential projects
+            in Nagpur.
           </p>
         </motion.div>
 
@@ -93,7 +123,7 @@ export default function AmenitiesSection() {
                 01
               </div>
               <h3 className="font-serif font-bold text-xl text-[#003a78]">
-                Community Amenities
+                Community & Lifestyle Amenities
               </h3>
             </div>
 
@@ -109,10 +139,10 @@ export default function AmenitiesSection() {
                       <IconComp className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-slate-800 leading-snug">
+                      <h4 className="text-base font-bold text-slate-800 leading-snug">
                         {item.name}
                       </h4>
-                      <p className="text-[11px] text-slate-500 mt-0.5">
+                      <p className="text-[13px] text-slate-500 mt-0.5">
                         {item.desc}
                       </p>
                     </div>
@@ -135,7 +165,7 @@ export default function AmenitiesSection() {
                 02
               </div>
               <h3 className="font-serif font-bold text-xl text-[#003a78]">
-                Infrastructure Facility
+                Modern Infrastructure Facilities
               </h3>
             </div>
 
@@ -151,10 +181,10 @@ export default function AmenitiesSection() {
                       <IconComp className="w-4 h-4" />
                     </div>
                     <div>
-                      <h4 className="text-xs font-bold text-slate-800 leading-snug">
+                      <h4 className="text-sm font-bold text-slate-800 leading-snug">
                         {item.name}
                       </h4>
-                      <p className="text-[11px] text-slate-500 mt-0.5">
+                      <p className="text-[13px] text-slate-500 mt-0.5">
                         {item.desc}
                       </p>
                     </div>

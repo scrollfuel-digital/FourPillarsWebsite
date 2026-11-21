@@ -99,7 +99,7 @@ export default function AboutTrustSection() {
           style={{
             display: "grid",
             gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))",
-            gap: 48,
+            gap: 28,
             alignItems: "center",
           }}
         >
@@ -117,7 +117,7 @@ export default function AboutTrustSection() {
                   marginBottom: 8,
                 }}
               >
-                About 4 Pillars Reality
+                About 4 Pillars Realty – Trusted Real Estate Developer in Nagpur
               </h2>
             </FadeUp>
             <FadeUp delay={80}>
@@ -167,9 +167,11 @@ export default function AboutTrustSection() {
                 <strong style={{ color: "#003a78", fontWeight: 700 }}>
                   4 Pillars Reality
                 </strong>
-                , we believe every property should offer more than just space —
-                it should create opportunities for better living and long-term
-                value.
+                , we are committed to developing quality residential properties
+                that create lasting value for homeowners and investors. As a
+                real estate developer in Nagpur, we focus on creating
+                thoughtfully planned residential spaces that combine modern
+                living, convenience, and well-connected locations.
               </p>
             </FadeUp>
 
@@ -183,10 +185,14 @@ export default function AboutTrustSection() {
                   textAlign: "justify",
                 }}
               >
-                We specialize in residential plot developments, planned
-                townships, and premium luxury apartments across Nagpur. Our
-                projects are selected with a focus on location, connectivity,
-                infrastructure, and the needs of modern homebuyers.
+                We specialize in{" "}
+                <strong style={{ color: "#003a78", fontWeight: 700 }}>
+                  residential plots in Nagpur, planned townships, and premium
+                  luxury apartments
+                </strong>
+                . Our residential projects are carefully selected and developed
+                with a focus on location advantages, connectivity,
+                infrastructure, and the evolving needs of modern homebuyers.
               </p>
             </FadeUp>
 
@@ -200,9 +206,12 @@ export default function AboutTrustSection() {
                   textAlign: "justify",
                 }}
               >
-                We are committed to transparent communication, customer
-                satisfaction, and helping buyers make informed property
-                decisions through clear documentation and reliable guidance.
+                With over 20 years of experience, 4 Pillars Realty has delivered
+                more than 2,000 residential plots across 200+ acres of developed
+                land, helping over 1,500 families find their ideal property. We
+                believe in transparent communication, reliable documentation,
+                and customer-focused guidance to make every property-buying
+                decision more informed and confident.
               </p>
             </FadeUp>
 

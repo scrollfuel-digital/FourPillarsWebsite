@@ -322,12 +322,15 @@ export default function ProjectsCarouselSection({
             delay: 0.1,
           }}
         >
-          Our Signature Projects
+          Explore Our Premium 
+          <br />
+          Residential Projects in Nagpur
         </motion.h2>
 
         <p className="text-slate-600 max-w-xl mx-auto text-sm sm:text-base">
-          Explore Premium Residential Projects in Nagpur with Full Legal
-          Clearance and Ready Infrastructure .
+          Discover thoughtfully planned residential projects in Nagpur,
+          featuring prime locations, quality infrastructure and legally clear
+          properties.
         </p>
       </motion.div>
 
@@ -363,7 +366,7 @@ export default function ProjectsCarouselSection({
             <section className="space-y-10 md:space-y-12">
               <div className="mb-10 md:mb-12">
                 <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold leading-tight text-[#003a78]">
-                  Residential Plot Projects 
+                  Residential Plot Projects
                 </h3>
                 <p className="mt-4 text-sm md:text-base leading-8 text-gray-600 max-w-3xl">
                   Explore premium residential plots in well-planned communities
@@ -402,7 +405,7 @@ export default function ProjectsCarouselSection({
             <section className="space-y-10 md:space-y-12">
               <div className="mb-10 md:mb-12">
                 <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold leading-tight text-[#003a78]">
-                  Residential Apartment Projects 
+                  Residential Apartment Projects
                 </h3>
                 <p className="mt-4 text-sm md:text-base leading-8 text-gray-600 max-w-3xl">
                   Discover premium apartments designed for comfortable modern
@@ -436,7 +439,7 @@ export default function ProjectsCarouselSection({
               <section className="space-y-10 md:space-y-12">
                 <div className="mb-10 md:mb-12">
                   <h3 className="font-['Playfair_Display'] text-2xl md:text-3xl font-bold leading-tight text-[#003a78]">
-                    Upcoming Residential Projects 
+                    Upcoming Residential Projects
                   </h3>
                   <p className="mt-4 text-sm md:text-base leading-8 text-gray-600 max-w-3xl">
                     Explore upcoming real estate developments and discover

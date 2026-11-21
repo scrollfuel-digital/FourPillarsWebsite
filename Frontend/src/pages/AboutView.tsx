@@ -162,8 +162,6 @@ export default function AboutView() {
         lightMode ? "bg-white" : "bg-[#080c14]"
       }`}
     >
-    
-
       {/* ========================================
           1. HERO SECTION
       ======================================== */}
@@ -184,7 +182,8 @@ export default function AboutView() {
           <div className="absolute top-10 right-10 w-[300px] h-[300px] rounded-full bg-indigo-400 blur-[90px]" />
         </div>
 
-        <div className="relative z-10 max-w-5xl mx-auto">
+        <div className="relative z-10 max-w-7xl mx-auto">
+         
           <h1
             className={`about-heading transition-all duration-700 ${
               hero.inView
@@ -192,12 +191,13 @@ export default function AboutView() {
                 : "opacity-0 translate-y-8"
             } ${lightMode ? "text-slate-900" : "text-white"}`}
           >
-            About 4 Pillars Realty
+            About 4 Pillars Realty –
+            <br />
+            Trusted Real Estate Developer in Nagpur
             <span className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-400">
-              Building Trust Through Real Estate in Nagpur
+              Building Trust Through Quality Residential Developments
             </span>
           </h1>
-
           <div
             className={`h-[3px] mx-auto mt-7 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400 transition-all duration-1000 ${
               hero.inView ? "w-32" : "w-0"
@@ -244,20 +244,28 @@ export default function AboutView() {
             >
               <p>
                 4 Pillars Realty is a Nagpur-based real estate company focused
-                on developing residential plots, planned townships and premium
-                apartments.
+                on developing quality residential plots, planned townships and
+                premium apartments. As a real estate developer in Nagpur, we aim
+                to create well-planned properties that offer convenience,
+                connectivity and long-term value for homebuyers.
               </p>
 
               <p>
-                We aim to make property buying more transparent, informed and
+                We believe in making property buying more transparent and
                 convenient through carefully selected locations, quality
-                infrastructure and customer-focused services.
+                infrastructure, reliable documentation and customer-focused
+                guidance. Our approach is centred on helping buyers make
+                informed decisions when exploring residential properties in
+                Nagpur.
               </p>
 
               <p>
-                Our projects are planned to meet the needs of homebuyers and
-                property investors looking for suitable residential
-                opportunities in Nagpur and its growing neighbourhoods.
+                Our residential developments are planned to meet the evolving
+                needs of modern homebuyers and property investors. From
+                residential plots to thoughtfully designed apartments, 4 Pillars
+                Realty focuses on creating property opportunities that combine
+                location advantages, essential infrastructure and comfortable
+                living.
               </p>
             </div>
           </div>
@@ -407,9 +415,9 @@ export default function AboutView() {
                 lightMode ? "text-slate-900" : "text-white"
               }`}
             >
-              Our Real Estate
+              Our Principles for Responsible
               <span className="block text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-indigo-400">
-                Principles
+                Real Estate Development
               </span>
             </h2>
 
@@ -418,8 +426,9 @@ export default function AboutView() {
                 lightMode ? "text-slate-500" : "text-slate-400"
               }`}
             >
-              Every decision we make is anchored to these four principles — the
-              same ones that guide our approach to real estate.
+              Our approach to real estate development is guided by four core
+              principles: legal clarity, strategic locations, durable
+              infrastructure and transparent property transactions.
             </p>
           </div>
 

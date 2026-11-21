@@ -199,9 +199,9 @@ export default function ProjectDetailView() {
             >
               {project.name}
             </h1>
-            <h1 className="inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 mt-5  font-bold text-green-700">
+            <span className="inline-flex items-center gap-1 rounded-full bg-green-100 px-3 py-1 mt-5  font-bold text-green-700">
               {project.sanctioned}
-            </h1>
+            </span>
             <p className="text-slate-500 text-xs flex items-center gap-1.5 mt-3">
               <MapPin className="w-4 h-4 text-red-500 shrink-0" />{" "}
               {project.location} | {project.mapHotspot}

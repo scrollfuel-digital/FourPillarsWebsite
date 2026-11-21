@@ -169,7 +169,7 @@ export default function WhyChooseUsSection() {
                 lineHeight: 1.6,
               }}
             >
-              Trusted Real Estate Partner in Nagpur
+              Your Trusted Partner for Residential Plots and Apartments in Nagpur.
             </p>
           </div>
         </FadeUp>
