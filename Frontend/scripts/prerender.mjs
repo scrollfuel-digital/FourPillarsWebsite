@@ -708,7 +708,13 @@ async function main() {
         removePreviousPrerenderedPages(routes);
         prepareSpaShell();
 
-        if (process.env.PRERENDER_ENGINE === "puppeteer") {
+        const isServerlessOrCi = Boolean(
+            process.env.VERCEL ||
+            process.env.AWS_LAMBDA_FUNCTION_NAME ||
+            process.env.CI
+        );
+
+        if (process.env.PRERENDER_ENGINE === "puppeteer" && !isServerlessOrCi) {
             try {
                 console.log("\nAttempting live Puppeteer crawl (PRERENDER_ENGINE=puppeteer)...");
                 const puppeteer = (await import("puppeteer")).default;
