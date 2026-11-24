@@ -73,11 +73,10 @@ export default function RouteSEO() {
     );
   }
 
-  // Wait for project API only if we do not already have static project config
-  if (isProjectRoute && loading && !projectConfig) {
+  // Wait for project data before marking the project route as ready
+  if (isProjectRoute && loading) {
     return (
       <Helmet>
-        <meta name="robots" content="noindex, nofollow" />
         <meta name="prerender-status" content="pending" />
       </Helmet>
     );
@@ -86,7 +85,9 @@ export default function RouteSEO() {
   // Page-wise SEO data
   const pageTitle =
     projectConfig?.title ??
-    (project ? `${project.name} | Residential Plots in Nagpur | 4 Pillars Realty` : undefined) ??
+    (project
+      ? `${project.name} | Residential Plots in Nagpur | 4 Pillars Realty`
+      : undefined) ??
     staticConfig?.title ??
     "Residential Projects in Nagpur | 4 Pillars Realty";
 
@@ -110,8 +111,12 @@ export default function RouteSEO() {
   const canonicalUrl = getCanonicalUrl(canonicalPath);
 
   const imageUrl = project?.image
-    ? (project.image.startsWith("http") ? project.image : new URL(project.image, SITE_URL).href)
+    ? project.image.startsWith("http")
+      ? project.image
+      : new URL(project.image, SITE_URL).href
     : `${SITE_URL}/og-image.jpg`;
+
+ 
 
   const schemaData = {
     "@context": "https://schema.org",

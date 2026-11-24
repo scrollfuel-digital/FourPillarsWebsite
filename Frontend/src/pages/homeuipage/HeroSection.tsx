@@ -30,7 +30,13 @@ export default function HeroSection({
   const [rotatingIndex, setRotatingIndex] = useState(0);
   const [addressModalOpen, setAddressModalOpen] = useState(false);
   const [videoReady, setVideoReady] = useState(false);
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setRotatingIndex((prev) => (prev + 1) % ROTATING_PHRASES.length);
+    }, 2500);
 
+    return () => clearInterval(interval);
+  }, []);
   return (
     <section
       ref={heroRef}
@@ -88,21 +94,25 @@ export default function HeroSection({
             {/* ================= ROTATING TEXT ================= */}
             <motion.div
               key={rotatingIndex}
+              initial={{ opacity: 0, y: 25 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -25 }}
+              transition={{ duration: 0.5, ease: "easeInOut" }}
               className="
-                text-3xl
-                sm:text-4xl
-                md:text-6xl
-                font-extrabold
-                text-white/95
-                min-h-12
-                flex
-                items-center
-                justify-center
-                tracking-tight
-              "
-             
+    text-3xl
+    sm:text-4xl
+    md:text-6xl
+    font-extrabold
+    text-white/95
+    min-h-12
+    flex
+    items-center
+    justify-center
+    tracking-tight
+    text-center
+  "
             >
-              <h1>Residential Plots in Nagpur</h1>
+              <h1>{ROTATING_PHRASES[rotatingIndex]}</h1>
             </motion.div>
 
             {/* ================= DESCRIPTION ================= */}

@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import api from "../utils/api";
 import type { Project } from "../types";
@@ -14,9 +13,7 @@ interface ProjectApiResponse {
   data?: Project;
 }
 
-export function useProject(
-  slug: string | undefined
-): UseProjectReturn {
+export function useProject(slug: string | undefined): UseProjectReturn {
   const [project, setProject] = useState<Project | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,9 +34,9 @@ export function useProject(
       setLoading(true);
 
       try {
-        const response = await api.get(
-          `/projects/${encodeURIComponent(slug)}`
-        ) as ProjectApiResponse;
+        const response = (await api.get(
+          `/projects/${encodeURIComponent(slug)}`,
+        )) as ProjectApiResponse;
 
         const projectData = response.data;
 
@@ -59,9 +56,7 @@ export function useProject(
           setProject(null);
 
           setError(
-            err instanceof Error
-              ? err.message
-              : "Unable to load project"
+            err instanceof Error ? err.message : "Unable to load project",
           );
         }
       } finally {
