@@ -5,7 +5,6 @@ import { Helmet } from "react-helmet-async";
 import Aboutusimage from "../assests/images/images/aboutus.png";
 import FounderImage from "../assests/images/images/founder-sachin-kale.jpeg";
 import ResidentialProjects from "@/components/ui/ResidentialProjects";
-import { seoData } from "@/seo/seoData";
 
 interface AboutViewProps {
   lightMode: boolean;
@@ -184,8 +183,7 @@ export default function AboutView() {
         </div>
 
         <div className="relative z-10 max-w-7xl mx-auto">
-          <h1 className="sr-only">{seoData.home.h1}</h1>
-          <h2
+          <h1
             className={`about-heading transition-all duration-700 ${
               hero.inView
                 ? "opacity-100 translate-y-0"
@@ -194,11 +192,11 @@ export default function AboutView() {
           >
             About 4 Pillars Realty –
             <br />
-            Trusted Real Estate Developer in Nagpur
+            Trusted Real Estate Developer in Nagpur{" "}
             <span className="block mt-3 text-transparent bg-clip-text bg-gradient-to-r from-blue-500 via-blue-400 to-indigo-400">
               Building Trust Through Quality Residential Developments
             </span>
-          </h2>
+          </h1>
           <div
             className={`h-[3px] mx-auto mt-7 rounded-full bg-gradient-to-r from-blue-500 to-indigo-400 transition-all duration-1000 ${
               hero.inView ? "w-32" : "w-0"

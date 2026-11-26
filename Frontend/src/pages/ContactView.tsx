@@ -8,7 +8,6 @@ import { useInquiry } from "../hooks/useInquiry";
 import { useToast } from "../context/ToastContext";
 import { PROJECTS } from "../data";
 import { Mail, Phone, MapPin, CheckCircle, Navigation } from "lucide-react";
-import { seoData } from "@/seo/seoData";
 
 const contactValidationSchema = Yup.object().shape({
   name: Yup.string().trim().required("Full name is required"),
@@ -148,10 +147,9 @@ export default function ContactView() {
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
           className="text-center mb-20"
         >
-          <h1 className="sr-only">{seoData.home.h1}</h1>
-          <h2 className="font-serif tracking-tight font-bold mt-3 text-[#003A78] text-4xl sm:text-5xl">
+          <h1 className="font-serif tracking-tight font-bold mt-3 text-[#003A78] text-4xl sm:text-5xl">
             Contact 4 Pillars Realty
-          </h2>
+          </h1>
           <p className="text-[#003A78]/60 mt-3 text-sm sm:text-base max-w-md mx-auto">
             Speak with our advisory team and book a private site visit today.
           </p>
