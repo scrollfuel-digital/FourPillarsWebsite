@@ -13,6 +13,51 @@ export const BRAND_COLORS = {
 
 export const PROJECTS: Project[] = [
   {
+    id: "canberra-city",
+    name: "Canberra City",
+    slug: "canberra-city",
+    type: "plot",
+    location: "97 NMRDA Sanctioned Residential Plots in a 6-Acre Layout",
+    description:
+      "Looking for NMRDA approved plots on Wardha Road, Nagpur? Canberra City by 4 Pillars Realty is a 6-acre residential plotted development with 97 plots, backed by an NMRDA Sanctioned Release Letter (RL). Located in the fast-growing Wardha Road corridor, it combines flat, elevated land, wide internal roads, underground electricity and individual water supply lines, making it a practical choice for home builders and long-term investors in Nagpur.",
+    details: [
+      "6 acres of perfectly flat, elevated prime residential land",
+      "97 Residential Plots with NMRDA Sanctioned Release Letter (RL)",
+      "Wide 40ft & 30ft internal tar roads with green open spaces & storm water systems",
+      "Individual water supply lines & underground electricity at every plot boundary",
+    ],
+    specs: [
+      { label: "Project Area", value: "6 Acres" },
+      { label: "Total Plots", value: "97 Residential Plots" },
+      { label: "Internal Roads", value: "30ft & 40ft Broad Asphalt Avenues" },
+      { label: "Bank Loan Support", value: "Pre-Approved Up to 80%" },
+      { label: "Clear Title", value: "100% NMRDA RL Sanctioned" },
+    ],
+    highlights: [
+      "97 Residential Plots",
+      "6 Acre Development",
+      "Green Open Spaces",
+      "Premium Layout Planning",
+    ],
+    amenities: [
+      "Grand Entrance Security Gate",
+      "Landscaped Gardens & Open Green Spaces",
+      "Gazebos & Outdoor Seating Areas",
+      "Broad Walking & Jogging Tracks",
+      "Storm Water & Drainage System",
+      "24/7 Gated Security Patrol",
+      "Wide Tar & Cement Roads",
+    ],
+    acres: "6",
+    totalUnits: "97",
+    status: "ongoing",
+    priceRange: "₹30 Lakh onward",
+    image: canberra,
+    gallery: [canberra, hero],
+    coordinate: { x: 25, y: 58 },
+    mapHotspot: "Wardha Road Smart Belt",
+  },
+  {
     id: "melbourne-city-sector-ii",
     name: "Melbourne City Sector II",
     slug: "melbourne-city-sector-ii",
@@ -58,53 +103,6 @@ export const PROJECTS: Project[] = [
     coordinate: { x: 38, y: 72 },
     mapHotspot: "Kaldongri Highway Hub",
   },
-
-  {
-    id: "canberra-city",
-    name: "Canberra City",
-    slug: "canberra-city",
-    type: "plot",
-    location: "97 NMRDA Sanctioned Residential Plots in a 6-Acre Layout",
-    description:
-      "Looking for NMRDA approved plots on Wardha Road, Nagpur? Canberra City by 4 Pillars Realty is a 6-acre residential plotted development with 97 plots, backed by an NMRDA Sanctioned Release Letter (RL). Located in the fast-growing Wardha Road corridor, it combines flat, elevated land, wide internal roads, underground electricity and individual water supply lines, making it a practical choice for home builders and long-term investors in Nagpur.",
-    details: [
-      "6 acres of perfectly flat, elevated prime residential land",
-      "97 Residential Plots with NMRDA Sanctioned Release Letter (RL)",
-      "Wide 40ft & 30ft internal tar roads with green open spaces & storm water systems",
-      "Individual water supply lines & underground electricity at every plot boundary",
-    ],
-    specs: [
-      { label: "Project Area", value: "6 Acres" },
-      { label: "Total Plots", value: "97 Residential Plots" },
-      { label: "Internal Roads", value: "30ft & 40ft Broad Asphalt Avenues" },
-      { label: "Bank Loan Support", value: "Pre-Approved Up to 80%" },
-      { label: "Clear Title", value: "100% NMRDA RL Sanctioned" },
-    ],
-    highlights: [
-      "97 Residential Plots",
-      "6 Acre Development",
-      "Green Open Spaces",
-      "Premium Layout Planning",
-    ],
-    amenities: [
-      "Grand Entrance Security Gate",
-      "Landscaped Gardens & Open Green Spaces",
-      "Gazebos & Outdoor Seating Areas",
-      "Broad Walking & Jogging Tracks",
-      "Storm Water & Drainage System",
-      "24/7 Gated Security Patrol",
-      "Wide Tar & Cement Roads",
-    ],
-    acres: "6",
-    totalUnits: "97",
-    status: "ongoing",
-    priceRange: "₹30 Lakh onward",
-    image: canberra,
-    gallery: [canberra, hero],
-    coordinate: { x: 25, y: 58 },
-    mapHotspot: "Wardha Road Smart Belt",
-  },
-
   {
     id: "shraddha-bhakti-avenue",
     name: "Shraddha Bhakti Avenue",
@@ -182,87 +180,6 @@ export const PROJECTS: Project[] = [
     mapHotspot: "Kharsoli Growth Zone",
   },
 
-  {
-    id: "kharsoli-township",
-    name: "Kharsoli Township Project",
-    slug: "kharsoli-township",
-    type: "upcoming",
-    location: "Kharsoli, Nagpur",
-    description:
-      "A premium township development spread across 9 acres featuring 126 residential plots designed for future-ready living.",
-    details: [
-      "9 Acres Township Development in Kharsoli",
-      "126 Residential Plots",
-      "Planned Residential Community",
-      "Wide Internal Roads & Modern Infrastructure",
-    ],
-    specs: [
-      { label: "Area", value: "9 Acres" },
-      { label: "Plots", value: "126 Residential Plots" },
-      { label: "Status", value: "Upcoming Pre-Launch" },
-    ],
-    highlights: [
-      "Planned Residential Community",
-      "Wide Internal Roads",
-      "Modern Infrastructure",
-      "Future Growth Potential",
-    ],
-    amenities: [
-      "Wide Internal Roads",
-      "Landscaped Green Spaces",
-      "Electrical & Underground Drainage",
-      "Street Lighting",
-    ],
-    acres: "9",
-    totalUnits: "126",
-    status: "upcoming",
-    priceRange: "Coming Soon",
-    image: hero,
-    gallery: [hero],
-    coordinate: { x: 70, y: 35 },
-    mapHotspot: "Kharsoli",
-  },
-
-  {
-    id: "mega-township-project",
-    name: "Mega Township Project",
-    slug: "mega-township-project",
-    type: "upcoming",
-    location: "Nagpur Growth Corridor",
-    description:
-      "A landmark 60+ acre development featuring over 1000 residential plots designed to become one of Nagpur's most promising residential destinations.",
-    details: [
-      "Landmark 60+ Acre Mega Township",
-      "1000+ Residential Plots",
-      "Comprehensive Infrastructure & Open Green Spaces",
-      "Long-Term Appreciation Potential",
-    ],
-    specs: [
-      { label: "Township Area", value: "60+ Acres" },
-      { label: "Total Plots", value: "1000+ Residential Plots" },
-      { label: "Status", value: "Upcoming Flagship Pre-Launch" },
-    ],
-    highlights: [
-      "60+ Acre Township",
-      "1000+ Residential Plots",
-      "Comprehensive Infrastructure",
-      "Long-Term Appreciation Potential",
-    ],
-    amenities: [
-      "Grand Entrance Arch",
-      "Broad Avenues & Internal Roads",
-      "Parks & Recreation Hubs",
-      "Underground Utilities & Street Lights",
-    ],
-    acres: "60+",
-    totalUnits: "1000+",
-    status: "upcoming",
-    priceRange: "Price on Request",
-    image: hero,
-    gallery: [hero],
-    coordinate: { x: 72, y: 38 },
-    mapHotspot: "Nagpur Growth Corridor",
-  },
 ];
 
 export const AMENITIES_CATALOG = [

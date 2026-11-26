@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { ROTATING_PHRASES, HERO_TRUST_BADGES } from "./homeData";
+import { seoData } from "../../seo/seoData";
 import OfficeAddressModal from "../../components/ui/OfficeAddressModal";
 
 interface HeroSectionProps {
@@ -91,6 +92,8 @@ export default function HeroSection({
             }}
             className="text-center space-y-8 max-w-4xl"
           >
+            <h1 className="sr-only">{seoData.home.h1}</h1>
+
             {/* ================= ROTATING TEXT ================= */}
             <motion.div
               key={rotatingIndex}
@@ -112,7 +115,7 @@ export default function HeroSection({
     text-center
   "
             >
-              <h1>{ROTATING_PHRASES[rotatingIndex]}</h1>
+              <h2>{ROTATING_PHRASES[rotatingIndex]}</h2>
             </motion.div>
 
             {/* ================= DESCRIPTION ================= */}

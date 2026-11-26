@@ -1,5 +1,12 @@
 import { useNavigate } from "react-router-dom";
-import { Mail, Phone, MapPin, ShieldCheck, Facebook, Instagram } from "lucide-react";
+import {
+  Mail,
+  Phone,
+  MapPin,
+  ShieldCheck,
+  Facebook,
+  Instagram,
+} from "lucide-react";
 
 import logo1 from "../../assests/images/images/logo1.png";
 
@@ -22,12 +29,10 @@ export default function Footer({ lightMode }: FooterProps) {
   ];
 
   const projects = [
-    { name: "Melbourne City Sector II", path: "/melbourne-city-sector-ii" },
     { name: "Canberra City", path: "/canberra-city" },
+    { name: "Melbourne City Sector II", path: "/melbourne-city-sector-ii" },
+    { name: "Perth City", path: "/perth-city" },
     { name: "Shraddha Bhakti Avenue", path: "/shraddha-bhakti-avenue" },
-    {name:"Perth City" , path:"/perth-city"},
-    {name:"Kharsoli Township Project-Upcoming", path:"/kharsoli-township"},
-    {name:"Mega Township Project-Upcoming", path:"/mega-township-project"}
   ];
 
   const socialLinks = [

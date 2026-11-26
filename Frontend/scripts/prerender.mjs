@@ -28,8 +28,7 @@ const KNOWN_PROJECT_ROUTES = [
     "/melbourne-city-sector-ii",
     "/shraddha-bhakti-avenue",
     "/perth-city",
-    "/kharsoli-township",
-    "/mega-township-project",
+    
 ];
 
 const STATIC_PAGE_SEO = {
@@ -39,6 +38,7 @@ const STATIC_PAGE_SEO = {
         keywords: "Residential plots in Nagpur",
         canonical: "https://4pillarsrealty.com/",
         image: "https://4pillarsrealty.com/og-image.jpg",
+        h1: "Residential Plots in Nagpur",
     },
     "/about": {
         title: "About 4 Pillars Realty | Real Estate Developer in Nagpur",
@@ -46,6 +46,7 @@ const STATIC_PAGE_SEO = {
         keywords: "Real estate developer in Nagpur",
         canonical: "https://4pillarsrealty.com/about",
         image: "https://4pillarsrealty.com/og-image.jpg",
+        h1: "About 4 Pillars Realty – Trusted Real Estate Developer in Nagpur",
     },
     "/projects": {
         title: "Residential Projects in Nagpur | 4 Pillars Realty",
@@ -53,6 +54,7 @@ const STATIC_PAGE_SEO = {
         keywords: "Residential projects in Nagpur",
         canonical: "https://4pillarsrealty.com/projects",
         image: "https://4pillarsrealty.com/og-image.jpg",
+        h1: "Our Projects",
     },
     "/contact": {
         title: "Contact 4 Pillars Realty | Book a Site Visit in Nagpur",
@@ -60,6 +62,7 @@ const STATIC_PAGE_SEO = {
         keywords: "Contact 4 Pillars Realty Nagpur",
         canonical: "https://4pillarsrealty.com/contact",
         image: "https://4pillarsrealty.com/og-image.jpg",
+        h1: "Contact 4 Pillars Realty",
     },
 };
 
@@ -70,6 +73,7 @@ const KNOWN_PROJECT_SEO = {
         keywords: "Residential Plots in Peotha",
         canonical: "https://4pillarsrealty.com/canberra-city",
         image: "https://res.cloudinary.com/ds1y9wivv/image/upload/v1794813923/fourpillars/covers/oqywuc8l8lvjflizcqwt.png",
+        h1: "Canberra City",
     },
     "melbourne-city-sector-ii": {
         title: "Residential Plots in Peotha Nagpur | Melbourne City Sector II",
@@ -77,6 +81,7 @@ const KNOWN_PROJECT_SEO = {
         keywords: "Residential Plots in Peotha Nagpur",
         canonical: "https://4pillarsrealty.com/melbourne-city-sector-ii",
         image: "https://res.cloudinary.com/ds1y9wivv/image/upload/v1794813923/fourpillars/covers/oqywuc8l8lvjflizcqwt.png",
+        h1: "Melbourne City Sector II",
     },
     "shraddha-bhakti-avenue": {
         title: "3 BHK Flats in Besa Nagpur | Shraddha Bhakti Avenue",
@@ -84,6 +89,7 @@ const KNOWN_PROJECT_SEO = {
         keywords: "3 BHK Flats in Besa Nagpur",
         canonical: "https://4pillarsrealty.com/shraddha-bhakti-avenue",
         image: "https://4pillarsrealty.com/og-image.jpg",
+        h1: "Shraddha Bhakti Avenue",
     },
     "perth-city": {
         title: "NMRDA Approved Plots in Kharsoli Nagpur | Perth City",
@@ -91,21 +97,8 @@ const KNOWN_PROJECT_SEO = {
         keywords: "NMRDA Approved Plots in Kharsoli Nagpur",
         canonical: "https://4pillarsrealty.com/perth-city",
         image: "https://4pillarsrealty.com/og-image.jpg",
-    },
-    "kharsoli-township": {
-        title: "Residential Plots in Kharsoli Nagpur | Kharsoli Township",
-        description: "Explore Kharsoli Township by 4 Pillars Realty, offering residential plots in Kharsoli, Nagpur. Discover the project and explore property options.",
-        keywords: "Residential Plots in Kharsoli Nagpur",
-        canonical: "https://4pillarsrealty.com/kharsoli-township",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-    },
-    "mega-township-project": {
-        title: "Residential Plots in Nagpur | Mega Township Project",
-        description: "Explore Mega Township Project by 4 Pillars Realty, an upcoming 60+ acre residential township in Nagpur featuring 1000+ residential plots and planned infrastructure.",
-        keywords: "Residential Plots in Nagpur",
-        canonical: "https://4pillarsrealty.com/mega-township-project",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-    },
+        h1: "Perth City",
+    }
 };
 
 let projectsApiData = [];
@@ -386,6 +379,15 @@ async function startPreviewServer() {
     await waitForPreview(PREVIEW_URL);
 }
 
+function escapeHtml(text) {
+    return String(text || "")
+        .replace(/&/g, "&amp;")
+        .replace(/</g, "&lt;")
+        .replace(/>/g, "&gt;")
+        .replace(/"/g, "&quot;")
+        .replace(/'/g, "&#39;");
+}
+
 function getRouteMeta(route) {
     if (STATIC_PAGE_SEO[route]) {
         return STATIC_PAGE_SEO[route];
@@ -409,6 +411,7 @@ function getRouteMeta(route) {
             image: apiProject.image
                 ? (apiProject.image.startsWith("http") ? apiProject.image : `${SITE_URL}${apiProject.image}`)
                 : `${SITE_URL}/og-image.jpg`,
+            h1: apiProject.name || "Residential Plots in Nagpur",
         };
     }
 
@@ -418,6 +421,7 @@ function getRouteMeta(route) {
         keywords: "Residential projects in Nagpur",
         canonical: expectedCanonical(route),
         image: `${SITE_URL}/og-image.jpg`,
+        h1: "Residential Projects in Nagpur",
     };
 }
 
@@ -475,7 +479,13 @@ ${schemaBlock}
 <meta name="prerender-status" content="ready">
 `;
 
-    const combinedHtml = baseHtml.replace("</head>", `${seoBlock}\n</head>`);
+    let combinedHtml = baseHtml.replace("</head>", `${seoBlock}\n</head>`);
+    if (meta.h1) {
+        combinedHtml = combinedHtml.replace(
+            /<div\s+id=["']root["']\s*>[\s\S]*?<\/div>/i,
+            `<div id="root"><h1 class="sr-only">${escapeHtml(meta.h1)}</h1></div>`
+        );
+    }
     return formatHtml(combinedHtml);
 }
 

@@ -16,7 +16,7 @@ export const seoData: Record<string, PageSEO> = {
       "Residential plots and apartments in Nagpur by 4 Pillars Realty. Explore Melbourne City, Canberra City and more. Book a free site visit.",
     path: "/",
     keyword: "Residential plots in Nagpur",
-    h1: "",
+    h1: "Residential Plots in Nagpur",
   },
 
   about: {
@@ -25,7 +25,7 @@ export const seoData: Record<string, PageSEO> = {
       "Know about 4 Pillars Realty, a Nagpur real estate developer offering residential plots and apartments. Explore our projects and approach.",
     path: "/about",
     keyword: "Real estate developer in Nagpur",
-    h1: "",
+    h1: "About 4 Pillars Realty – Trusted Real Estate Developer in Nagpur",
   },
 
   projects: {
@@ -34,7 +34,7 @@ export const seoData: Record<string, PageSEO> = {
       "Explore residential plots and apartments by 4 Pillars Realty in Nagpur. Discover Melbourne City, Canberra City, Perth City and more.",
     path: "/projects",
     keyword: "Residential projects in Nagpur",
-    h1: "",
+    h1: "Our Projects",
   },
 
     
@@ -44,7 +44,7 @@ export const seoData: Record<string, PageSEO> = {
       "Contact 4 Pillars Realty in Nagpur for residential plots and apartments. Call, WhatsApp or visit our office to book a site visit.",
     path: "/contact",
     keyword: "Contact 4 Pillars Realty Nagpur",
-    h1: "",
+    h1: "Contact 4 Pillars Realty",
   },
 };
 
