@@ -55,16 +55,17 @@ export default function Navbar({
   const projects = [
     {
       name: "Melbourne City Sector II",
-      route: "melbourne-city-sector-ii",
+      route: "/projects/melbourne-city-sector-ii",
       status: "Active",
     },
-    { name: "Canberra City", route: "canberra-city", status: "Active" },
+    { name: "Canberra City", route: "/projects/canberra-city", status: "Active" },
     {
       name: "Shraddha Bhakti Avenue",
-      route: "shraddha-bhakti-avenue",
+      route: "/projects/shraddha-bhakti-avenue",
       status: "Active",
     },
-    { name: "Future Phase Projects", route: "upcoming", status: "Coming Soon" },
+    { name: "Perth City", route: "/projects/perth-city", status: "Active" },
+    { name: "All Projects", route: "/projects", status: "Explore" },
   ];
 
   useEffect(() => {
@@ -277,7 +278,7 @@ export default function Navbar({
                       <motion.button
                         key={project.route}
                         onClick={() => {
-                          handleLinkClick(`/${project.route}`);
+                          handleLinkClick(project.route);
                           setShowSearch(false);
                           setSearchQuery("");
                         }}

@@ -29,10 +29,10 @@ export default function Footer({ lightMode }: FooterProps) {
   ];
 
   const projects = [
-    { name: "Canberra City", path: "/canberra-city" },
-    { name: "Melbourne City Sector II", path: "/melbourne-city-sector-ii" },
-    { name: "Perth City", path: "/perth-city" },
-    { name: "Shraddha Bhakti Avenue", path: "/shraddha-bhakti-avenue" },
+    { name: "Canberra City", path: "/projects/canberra-city" },
+    { name: "Melbourne City Sector II", path: "/projects/melbourne-city-sector-ii" },
+    { name: "Perth City", path: "/projects/perth-city" },
+    { name: "Shraddha Bhakti Avenue", path: "/projects/shraddha-bhakti-avenue" },
   ];
 
   const socialLinks = [

@@ -1,19 +1,22 @@
 import { lazy, Suspense, useEffect } from "react";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { Routes, Route, Navigate, useParams } from "react-router-dom";
 import MainLayout from "./layouts/MainLayout";
 import { ToastProvider } from "./context/ToastContext";
 import { AuthProvider } from "./context/AuthContext";
+import { PROJECTS } from "./data";
+import { projectSEO } from "./seo/seoData";
+import { triggerCtrlUAutoRefresh } from "./utils/ctrlURefresh";
 
 import HomeView from "./pages/HomeView";
+import ProjectsView from "./pages/ProjectsView";
+import ProjectDetailView from "./pages/ProjectDetailView";
 
 // Lazy-loaded secondary pages & components for code splitting
 const AboutView = lazy(() => import("./pages/AboutView"));
-const ProjectsView = lazy(() => import("./pages/ProjectsView"));
 const InteractiveMap = lazy(() => import("./components/InteractiveMap"));
 const BlogsView = lazy(() => import("./pages/BlogsView"));
 const FaqView = lazy(() => import("./pages/FaqView"));
 const ContactView = lazy(() => import("./pages/ContactView"));
-const ProjectDetailView = lazy(() => import("./pages/ProjectDetailView"));
 const SignupView = lazy(() => import("./pages/SignupView"));
 const LoginView = lazy(() => import("./pages/LoginView"));
 const AdminView = lazy(() => import("./pages/admin/AdminView"));
@@ -36,27 +39,24 @@ function LoadingScreen() {
   );
 }
 
+const KNOWN_PROJECT_SLUGS = new Set([
+  ...PROJECTS.map((p) => p.slug),
+  ...Object.keys(projectSEO),
+]);
+
+function LegacyProjectRedirect() {
+  const { slug } = useParams<{ slug: string }>();
+  if (slug && KNOWN_PROJECT_SLUGS.has(slug)) {
+    return <Navigate to={`/projects/${slug}`} replace />;
+  }
+  return <NotFound />;
+}
+
 export default function App() {
   useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      const isCtrl = e.ctrlKey || e.metaKey;
-      const isU =
-        (e.key && e.key.toLowerCase() === "u") ||
-        e.code === "KeyU" ||
-        e.keyCode === 85 ||
-        e.which === 85;
-      const isMacViewSource = e.metaKey && e.altKey && isU;
-
-      if ((isCtrl && isU) || isMacViewSource) {
-        window.location.reload();
-      }
-    };
-
-    document.addEventListener("keydown", handleKeyDown, true);
-    window.addEventListener("keydown", handleKeyDown, true);
+    window.addEventListener("keydown", triggerCtrlUAutoRefresh, true);
     return () => {
-      document.removeEventListener("keydown", handleKeyDown, true);
-      window.removeEventListener("keydown", handleKeyDown, true);
+      window.removeEventListener("keydown", triggerCtrlUAutoRefresh, true);
     };
   }, []);
 
@@ -72,14 +72,16 @@ export default function App() {
               <Route path="/" element={<HomeView />} />
               <Route path="/about" element={<AboutView />} />
               <Route path="/projects" element={<ProjectsView />} />
-              <Route path="/project" element={<Navigate to="/projects" replace />} />
+              <Route
+                path="/project"
+                element={<Navigate to="/projects" replace />}
+              />
               <Route path="/projects/:slug" element={<ProjectDetailView />} />
               <Route path="/map" element={<InteractiveMap />} />
               <Route path="/blogs" element={<BlogsView />} />
               <Route path="/faqs" element={<FaqView />} />
               <Route path="/contact" element={<ContactView />} />
-
-              <Route path="/:slug" element={<ProjectDetailView />} />
+              <Route path="/:slug" element={<LegacyProjectRedirect />} />
               <Route path="*" element={<NotFound />} />
             </Route>
             <Route

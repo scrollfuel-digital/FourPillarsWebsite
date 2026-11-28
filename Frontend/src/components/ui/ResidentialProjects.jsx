@@ -8,27 +8,17 @@ const plotProjects = [
     {
         name: "Canberra City",
         location: "Nagpur",
-        path: "/canberra-city",
+        path: "/projects/canberra-city",
     },
     {
         name: "Melbourne City Sector II",
         location: "Nagpur",
-        path: "/melbourne-city-sector-2",
+        path: "/projects/melbourne-city-sector-ii",
     },
     {
         name: "Perth City",
         location: "Nagpur",
-        path: "/perth-city",
-    },
-    {
-        name: "Kharsoli Township",
-        location: "Nagpur",
-        path: "/kharsoli-township",
-    },
-    {
-        name: "Mega Township Project",
-        location: "Nagpur",
-        path: "/mega-township",
+        path: "/projects/perth-city",
     },
 ];
 
@@ -36,7 +26,7 @@ const apartmentProjects = [
     {
         name: "Shraddha Bhakti Avenue",
         location: "Nagpur",
-        path: "/shraddha-bhakti-avenue",
+        path: "/projects/shraddha-bhakti-avenue",
     },
 ];
 
@@ -132,7 +122,7 @@ const ResidentialProjects = () => {
                         </span>
                     </h2>
 
-                   
+
                 </motion.div>
 
                 {/* Residential Plot Projects */}

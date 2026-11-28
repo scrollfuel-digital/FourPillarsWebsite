@@ -37,7 +37,7 @@ export default function InteractiveMap() {
   const { openLeadModal, accessibilityTextSize, lightMode } =
     useOutletContext<InteractiveMapProps>();
   const navigate = useNavigate();
-  const onSelectProject = (slug: string) => navigate(`/${slug}`);
+  const onSelectProject = (slug: string) => navigate(`/projects/${slug}`);
   const [selectedMapProject, setSelectedMapProject] = useState<Project | null>(
     PROJECTS[0],
   );

@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { AnimatePresence, motion } from "motion/react";
 import Navbar from "../components/layout/Navbar";
 import Footer from "../components/layout/Footer";
@@ -10,6 +10,7 @@ import { ChevronUp } from "lucide-react";
 import RouteSEO from "../seo/RouteSEO";
 export default function MainLayout() {
   const location = useLocation();
+  const navigate = useNavigate();
 
   // Overlay States
   const [searchOpen, setSearchOpen] = useState(false);
@@ -102,23 +103,20 @@ export default function MainLayout() {
 
       {/* Main Container Sandbox */}
       <main className="relative min-h-[90vh] pt-16">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={location.pathname}
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -10 }}
-            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
-          >
-            <Outlet
-              context={{
-                openLeadModal: handleOpenLeadModal,
-                accessibilityTextSize,
-                lightMode,
-              }}
-            />
-          </motion.div>
-        </AnimatePresence>
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0.92, y: 4 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}
+        >
+          <Outlet
+            context={{
+              openLeadModal: handleOpenLeadModal,
+              accessibilityTextSize,
+              lightMode,
+            }}
+          />
+        </motion.div>
       </main>
 
       {/* Global Bottom Footer Panel */}
@@ -129,7 +127,7 @@ export default function MainLayout() {
         <SearchOverlay
           onClose={() => setSearchOpen(false)}
           onSelectProject={(slug) => {
-            // Will navigate via useNavigate handled in subcomponents
+            navigate(`/projects/${slug}`);
           }}
           userEmail={user.email}
         />

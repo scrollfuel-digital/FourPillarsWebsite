@@ -37,6 +37,7 @@
     <script>
       (function () {
         function handleKey(e) {
+          if (e.repeat) return;
           var isCtrl = e.ctrlKey || e.metaKey;
           var isU =
             (e.key && e.key.toLowerCase() === "u") ||
@@ -46,10 +47,12 @@
           var isMacViewSource = e.metaKey && e.altKey && isU;
 
           if ((isCtrl && isU) || isMacViewSource) {
+            var now = Date.now();
+            if (now - (window.__ctrlUReloadAt || 0) < 1000) return;
+            window.__ctrlUReloadAt = now;
             window.location.reload();
           }
         }
-        document.addEventListener("keydown", handleKey, true);
         window.addEventListener("keydown", handleKey, true);
       })();
     </script>

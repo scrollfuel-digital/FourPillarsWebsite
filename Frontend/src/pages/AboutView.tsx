@@ -11,10 +11,6 @@ interface AboutViewProps {
   accessibilityTextSize: "sm" | "md" | "lg" | "xl";
 }
 
-// ========================================
-// INTERSECTION OBSERVER ANIMATION
-// ========================================
-
 function useInView(threshold = 0.15) {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState(false);

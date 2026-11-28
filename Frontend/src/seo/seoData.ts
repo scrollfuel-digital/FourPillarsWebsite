@@ -50,29 +50,29 @@ export const seoData: Record<string, PageSEO> = {
 
 export const projectSEO: Record<string, PageSEO> = {
   "canberra-city": {
-    title: "Residential Plots in Peotha Nagpur | Canberra City",
+    title: "NMRDA Sanctioned Plots in Peotha Nagpur | Canberra City",
     description:
-      "Explore Canberra City by 4 Pillars Realty, offering residential plots in Peotha, Nagpur. Discover plot options and find your ideal property.",
-    path: "/canberra-city",
-    keyword: "Residential Plots in Peotha",
+      "NMRDA Sanctioned Plots in Peotha, Nagpur: Canberra City by 4 Pillars Realty offers 97 residential plots in a 6-acre layout. Book a free site visit today.",
+    path: "/projects/canberra-city",
+    keyword: "NMRDA Sanctioned Plots in Peotha Nagpur ",
     h1: "Canberra City",
   },
 
   "melbourne-city-sector-ii": {
     title:
-      "Residential Plots in Peotha Nagpur | Melbourne City Sector II",
+      "NMRDA Residential Plots in Peotha Nagpur | Melbourne City",
     description:
-      "Explore Melbourne City Sector II by 4 Pillars Realty, offering residential plots in Peotha, Nagpur. Discover plot options and plan your dream home.",
-    path: "/melbourne-city-sector-ii",
-    keyword: "Residential Plots in Peotha Nagpur",
+      "NMRDA Residential Plots in Peotha Nagpur at Melbourne City Sector II by 4 Pillars Realty. Explore approved residential plots and book your free site visit today",
+    path: "/projects/melbourne-city-sector-ii",
+    keyword: "NMRDA Residential Plots in Peotha Nagpur",
     h1: "Melbourne City Sector II",
   },
 
   "shraddha-bhakti-avenue": {
-    title: "3 BHK Flats in Besa Nagpur | Shraddha Bhakti Avenue",
+    title: "Luxury 3 BHK Flats in Besa Nagpur | Shraddha Bhakti Avenue",
     description:
-      "Discover Shraddha Bhakti Avenue by 4 Pillars Realty, offering 3 BHK apartments in Besa, Nagpur. Explore apartment features and find your ideal home.",
-    path: "/shraddha-bhakti-avenue",
+      "Luxury 3 BHK Flats in Besa Nagpur at Shraddha Bhakti Avenue by 4 Pillars Realty. Spacious 2,106 sq.ft. flats in a 7-storey building. Book a site visit.",
+    path: "/projects/shraddha-bhakti-avenue",
     keyword: "3 BHK Flats in Besa Nagpur",
     h1: "Shraddha Bhakti Avenue"
   },
@@ -80,27 +80,10 @@ export const projectSEO: Record<string, PageSEO> = {
   "perth-city": {
     title: "NMRDA Approved Plots in Kharsoli Nagpur | Perth City",
     description:
-      "Explore Perth City by 4 Pillars Realty, offering 126+ NMRDA approved residential plots in Kharsoli, Nagpur, across a 9-acre gated layout.",
-    path: "/perth-city",
+      "NMRDA Approved Plots in Kharsoli, Nagpur at Perth City by 4 Pillars Realty. Explore residential plots in a well-planned layout and book your free site visit today.",
+    path: "/projects/perth-city",
     keyword: "NMRDA Approved Plots in Kharsoli Nagpur",
     h1: "Perth City"
   },
 
-  "kharsoli-township": {
-    title: "Residential Plots in Kharsoli Nagpur | Kharsoli Township",
-    description:
-      "Explore Kharsoli Township by 4 Pillars Realty, offering residential plots in Kharsoli, Nagpur. Discover the project and explore property options.",
-    path: "/kharsoli-township",
-    keyword: "Residential Plots in Kharsoli Nagpur",
-    h1: "Kharsoli Township"
-  },
-
-  "mega-township-project": {
-    title: "Residential Plots in Nagpur | Mega Township Project",
-    description:
-      "Explore Mega Township Project by 4 Pillars Realty, an upcoming 60+ acre residential township in Nagpur featuring 1000+ residential plots and planned infrastructure.",
-    path: "/mega-township-project",
-    keyword: "Residential Plots in Nagpur",
-    h1: "Mega Township Project"
-  },
 };

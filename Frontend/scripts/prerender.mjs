@@ -1,6 +1,7 @@
 import jsBeautify from "js-beautify";
 import { spawn } from "child_process";
 import { loadEnv } from "vite";
+import { transformSync } from "esbuild";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
@@ -10,96 +11,80 @@ const __dirname = path.dirname(__filename);
 
 const frontendDir = path.resolve(__dirname, "..");
 
-const SITE_URL = "https://4pillarsrealty.com";
+async function loadSeoConfig() {
+    const seoFilePath = path.join(frontendDir, "src", "seo", "seoData.ts");
+    const source = fs.readFileSync(seoFilePath, "utf-8");
+    const { code } = transformSync(source, {
+        loader: "ts",
+        format: "esm",
+    });
+    const encoded = Buffer.from(code, "utf-8").toString("base64");
+    return import(`data:text/javascript;base64,${encoded}`);
+}
+
+const { SITE_URL: RAW_SITE_URL, seoData, projectSEO } = await loadSeoConfig();
+const SITE_URL = String(RAW_SITE_URL || "https://4pillarsrealty.com").replace(/\/$/, "");
 const PREVIEW_URL = "http://127.0.0.1:4173";
 
 const env = loadEnv("production", frontendDir, "");
 const API_BASE = (env.VITE_API_URL || "https://fourpillarswebsite.onrender.com/api").replace(/\/$/, "");
 
-const STATIC_ROUTES = [
-    "/",
-    "/about",
-    "/projects",
-    "/contact",
-];
+function normalizeRoutePath(routePath) {
+    const cleaned = String(routePath || "/").trim().replace(/\/+$/, "");
+    return cleaned === "" ? "/" : cleaned.startsWith("/") ? cleaned : `/${cleaned}`;
+}
 
-const KNOWN_PROJECT_ROUTES = [
-    "/canberra-city",
-    "/melbourne-city-sector-ii",
-    "/shraddha-bhakti-avenue",
-    "/perth-city",
-    
-];
+function buildCanonical(routePath) {
+    const cleanRoute = normalizeRoutePath(routePath);
+    return cleanRoute === "/" ? `${SITE_URL}/` : `${SITE_URL}${cleanRoute}`;
+}
 
-const STATIC_PAGE_SEO = {
-    "/": {
-        title: "Residential Plots and Apartments in Nagpur | 4 Pillars Realty",
-        description: "Residential plots and apartments in Nagpur by 4 Pillars Realty. Explore Melbourne City, Canberra City and more. Book a free site visit.",
-        keywords: "Residential plots in Nagpur",
-        canonical: "https://4pillarsrealty.com/",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-        h1: "Residential Plots in Nagpur",
-    },
-    "/about": {
-        title: "About 4 Pillars Realty | Real Estate Developer in Nagpur",
-        description: "Know about 4 Pillars Realty, a Nagpur real estate developer offering residential plots and apartments. Explore our projects and approach.",
-        keywords: "Real estate developer in Nagpur",
-        canonical: "https://4pillarsrealty.com/about",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-        h1: "About 4 Pillars Realty – Trusted Real Estate Developer in Nagpur",
-    },
-    "/projects": {
-        title: "Residential Projects in Nagpur | 4 Pillars Realty",
-        description: "Explore residential plots and apartments by 4 Pillars Realty in Nagpur. Discover Melbourne City, Canberra City, Perth City and more.",
-        keywords: "Residential projects in Nagpur",
-        canonical: "https://4pillarsrealty.com/projects",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-        h1: "Our Projects",
-    },
-    "/contact": {
-        title: "Contact 4 Pillars Realty | Book a Site Visit in Nagpur",
-        description: "Contact 4 Pillars Realty in Nagpur for residential plots and apartments. Call, WhatsApp or visit our office to book a site visit.",
-        keywords: "Contact 4 Pillars Realty Nagpur",
-        canonical: "https://4pillarsrealty.com/contact",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-        h1: "Contact 4 Pillars Realty",
-    },
+const PROJECT_DEFAULT_IMAGES = {
+    "canberra-city": "https://res.cloudinary.com/ds1y9wivv/image/upload/v1794813923/fourpillars/covers/oqywuc8l8lvjflizcqwt.png",
+    "melbourne-city-sector-ii": "https://res.cloudinary.com/ds1y9wivv/image/upload/v1794813923/fourpillars/covers/oqywuc8l8lvjflizcqwt.png",
+    "shraddha-bhakti-avenue": `${SITE_URL}/og-image.jpg`,
+    "perth-city": `${SITE_URL}/og-image.jpg`,
 };
 
-const KNOWN_PROJECT_SEO = {
-    "canberra-city": {
-        title: "Residential Plots in Peotha Nagpur | Canberra City",
-        description: "Explore Canberra City by 4 Pillars Realty, offering residential plots in Peotha, Nagpur. Discover plot options and find your ideal property.",
-        keywords: "Residential Plots in Peotha",
-        canonical: "https://4pillarsrealty.com/canberra-city",
-        image: "https://res.cloudinary.com/ds1y9wivv/image/upload/v1794813923/fourpillars/covers/oqywuc8l8lvjflizcqwt.png",
-        h1: "Canberra City",
-    },
-    "melbourne-city-sector-ii": {
-        title: "Residential Plots in Peotha Nagpur | Melbourne City Sector II",
-        description: "Explore Melbourne City Sector II by 4 Pillars Realty, offering residential plots in Peotha, Nagpur. Discover plot options and plan your dream home.",
-        keywords: "Residential Plots in Peotha Nagpur",
-        canonical: "https://4pillarsrealty.com/melbourne-city-sector-ii",
-        image: "https://res.cloudinary.com/ds1y9wivv/image/upload/v1794813923/fourpillars/covers/oqywuc8l8lvjflizcqwt.png",
-        h1: "Melbourne City Sector II",
-    },
-    "shraddha-bhakti-avenue": {
-        title: "3 BHK Flats in Besa Nagpur | Shraddha Bhakti Avenue",
-        description: "Discover Shraddha Bhakti Avenue by 4 Pillars Realty, offering 3 BHK apartments in Besa, Nagpur. Explore apartment features and find your ideal home.",
-        keywords: "3 BHK Flats in Besa Nagpur",
-        canonical: "https://4pillarsrealty.com/shraddha-bhakti-avenue",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-        h1: "Shraddha Bhakti Avenue",
-    },
-    "perth-city": {
-        title: "NMRDA Approved Plots in Kharsoli Nagpur | Perth City",
-        description: "Explore Perth City by 4 Pillars Realty, offering 126+ NMRDA approved residential plots in Kharsoli, Nagpur, across a 9-acre gated layout.",
-        keywords: "NMRDA Approved Plots in Kharsoli Nagpur",
-        canonical: "https://4pillarsrealty.com/perth-city",
-        image: "https://4pillarsrealty.com/og-image.jpg",
-        h1: "Perth City",
-    }
-};
+const STATIC_PAGE_SEO = Object.fromEntries(
+    Object.values(seoData).map((entry) => {
+        const routePath = normalizeRoutePath(entry.path);
+        return [
+            routePath,
+            {
+                title: entry.title.trim(),
+                description: entry.description.trim(),
+                keywords: entry.keyword.trim(),
+                canonical: buildCanonical(routePath),
+                image: `${SITE_URL}/og-image.jpg`,
+                h1: entry.h1.trim(),
+            },
+        ];
+    })
+);
+
+const STATIC_ROUTES = Object.keys(STATIC_PAGE_SEO);
+
+const KNOWN_PROJECT_SEO = Object.fromEntries(
+    Object.entries(projectSEO).map(([slug, entry]) => {
+        const routePath = normalizeRoutePath(entry.path || `/projects/${slug}`);
+        return [
+            slug,
+            {
+                title: entry.title.trim(),
+                description: entry.description.trim(),
+                keywords: entry.keyword.trim(),
+                canonical: buildCanonical(routePath),
+                image: PROJECT_DEFAULT_IMAGES[slug] || `${SITE_URL}/og-image.jpg`,
+                h1: entry.h1.trim(),
+            },
+        ];
+    })
+);
+
+const KNOWN_PROJECT_ROUTES = Object.entries(projectSEO).map(([slug, entry]) =>
+    normalizeRoutePath(entry.path || `/projects/${slug}`)
+);
 
 let projectsApiData = [];
 
@@ -177,7 +162,7 @@ function organizeHead(raw) {
     const ctrlUScriptTag =
         extract(/<script>[\s\S]*?handleKey[\s\S]*?<\/script>/i) ||
         extract(/<script>[\s\S]*?isCtrlU[\s\S]*?<\/script>/i) ||
-        `<script>\n  (function () {\n    function handleKey(e) {\n      var isCtrl = e.ctrlKey || e.metaKey;\n      var isU =\n        (e.key && e.key.toLowerCase() === "u") ||\n        e.code === "KeyU" ||\n        e.keyCode === 85 ||\n        e.which === 85;\n      var isMacViewSource = e.metaKey && e.altKey && isU;\n\n      if ((isCtrl && isU) || isMacViewSource) {\n        window.location.reload();\n      }\n    }\n    document.addEventListener("keydown", handleKey, true);\n    window.addEventListener("keydown", handleKey, true);\n  })();\n</script>`;
+        `<script>\n  (function () {\n    function handleKey(e) {\n      if (e.repeat) return;\n      var isCtrl = e.ctrlKey || e.metaKey;\n      var isU =\n        (e.key && e.key.toLowerCase() === "u") ||\n        e.code === "KeyU" ||\n        e.keyCode === 85 ||\n        e.which === 85;\n      var isMacViewSource = e.metaKey && e.altKey && isU;\n\n      if ((isCtrl && isU) || isMacViewSource) {\n        var now = Date.now();\n        if (now - (window.__ctrlUReloadAt || 0) < 1000) return;\n        window.__ctrlUReloadAt = now;\n        window.location.reload();\n      }\n    }\n    window.addEventListener("keydown", handleKey, true);\n  })();\n</script>`;
 
     const sections = [];
     if (charsetTag) sections.push(charsetTag);
@@ -285,8 +270,10 @@ async function getProjectRoutes() {
             .map((project) => project.slug)
             .filter(Boolean)
             .map((slug) => {
-                const cleanSlug = String(slug).replace(/^\/+|\/+$/g, "");
-                return cleanSlug ? `/${cleanSlug}` : null;
+                const cleanSlug = String(slug)
+                    .replace(/^\/+|\/+$/g, "")
+                    .replace(/^projects\//, "");
+                return cleanSlug ? `/projects/${cleanSlug}` : null;
             })
             .filter(Boolean);
 
@@ -393,13 +380,14 @@ function getRouteMeta(route) {
         return STATIC_PAGE_SEO[route];
     }
 
-    const slug = route.replace(/^\/+|\/+$/g, "");
+    const cleanPath = route.replace(/^\/+|\/+$/g, "");
+    const slug = cleanPath.replace(/^projects\//, "");
     if (KNOWN_PROJECT_SEO[slug]) {
         return KNOWN_PROJECT_SEO[slug];
     }
 
     const apiProject = projectsApiData.find(
-        (p) => String(p.slug || "").replace(/^\/+|\/+$/g, "") === slug
+        (p) => String(p.slug || "").replace(/^\/+|\/+$/g, "").replace(/^projects\//, "") === slug
     );
 
     if (apiProject) {
@@ -407,7 +395,7 @@ function getRouteMeta(route) {
             title: `${apiProject.name} | Residential Plots in Nagpur | 4 Pillars Realty`,
             description: apiProject.description || "Residential plots and apartments in Nagpur by 4 Pillars Realty.",
             keywords: `${apiProject.name} Nagpur, Residential plots in Nagpur`,
-            canonical: `${SITE_URL}/${slug}`,
+            canonical: `${SITE_URL}/projects/${slug}`,
             image: apiProject.image
                 ? (apiProject.image.startsWith("http") ? apiProject.image : `${SITE_URL}${apiProject.image}`)
                 : `${SITE_URL}/og-image.jpg`,
@@ -432,7 +420,7 @@ function buildRouteHtml(route, baseHtml) {
     const schemaData = {
         "@context": "https://schema.org",
         "@type": "RealEstateAgent",
-        "@id": "https://4pillarsrealty.com/#business",
+        "@id": `${SITE_URL}/#business`,
         name: "4 Pillars Realty",
         url: canonicalUrl,
         logo: `${SITE_URL}/logo.png`,
@@ -455,26 +443,26 @@ function buildRouteHtml(route, baseHtml) {
     const schemaBlock = `<script type="application/ld+json">\n${JSON.stringify(schemaData, null, 2)}\n</script>`;
 
     const seoBlock = `
-<title>${meta.title}</title>
-<meta name="description" content="${meta.description}">
-<meta name="keywords" content="${meta.keywords}">
+<title>${escapeHtml(meta.title)}</title>
+<meta name="description" content="${escapeHtml(meta.description)}">
+<meta name="keywords" content="${escapeHtml(meta.keywords)}">
 <meta name="robots" content="index, follow, max-image-preview:large">
 <meta name="facebook-domain-verification" content="">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="4 Pillars Realty">
 <meta property="og:locale" content="en_IN">
-<meta property="og:title" content="${meta.title}">
-<meta property="og:description" content="${meta.description}">
-<meta property="og:url" content="${canonicalUrl}">
-<meta property="og:image" content="${meta.image}">
+<meta property="og:title" content="${escapeHtml(meta.title)}">
+<meta property="og:description" content="${escapeHtml(meta.description)}">
+<meta property="og:url" content="${escapeHtml(canonicalUrl)}">
+<meta property="og:image" content="${escapeHtml(meta.image)}">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
-<meta property="og:image:alt" content="${meta.title}">
+<meta property="og:image:alt" content="${escapeHtml(meta.title)}">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="${meta.title}">
-<meta name="twitter:description" content="${meta.description}">
-<meta name="twitter:image" content="${meta.image}">
-<link rel="canonical" href="${canonicalUrl}">
+<meta name="twitter:title" content="${escapeHtml(meta.title)}">
+<meta name="twitter:description" content="${escapeHtml(meta.description)}">
+<meta name="twitter:image" content="${escapeHtml(meta.image)}">
+<link rel="canonical" href="${escapeHtml(canonicalUrl)}">
 ${schemaBlock}
 <meta name="prerender-status" content="ready">
 `;
@@ -515,6 +503,7 @@ function prerenderRoutesStatically(routes) {
 
         if (route !== "/") {
             const flatOutputFile = path.join(frontendDir, "dist", `${cleanName}.html`);
+            fs.mkdirSync(path.dirname(flatOutputFile), { recursive: true });
             fs.writeFileSync(flatOutputFile, formattedHtml, "utf-8");
 
             if (route === "/projects") {
@@ -626,6 +615,7 @@ async function prerenderRoute(route) {
         } else {
             fs.writeFileSync(outputFile, formattedHtml, "utf-8");
             const flatOutputFile = path.join(frontendDir, "dist", `${cleanName}.html`);
+            fs.mkdirSync(path.dirname(flatOutputFile), { recursive: true });
             fs.writeFileSync(flatOutputFile, formattedHtml, "utf-8");
 
             if (route === "/projects") {

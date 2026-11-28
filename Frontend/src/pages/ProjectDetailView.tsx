@@ -4,6 +4,7 @@ import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { motion } from "framer-motion";
 import { useProject } from "../hooks/useProject";
+import { triggerCtrlUAutoRefresh } from "../utils/ctrlURefresh";
 import {
   CheckCircle,
   Calculator,
@@ -47,11 +48,55 @@ export default function ProjectDetailView() {
     setLoanAmount(Math.floor(defaultPrice * 0.8));
   }, [defaultPrice]);
 
-  // Loading check — only one early return
-  if (loading || !project) {
+  // Reset active image slide when switching project route
+  useEffect(() => {
+    setCurrent(0);
+  }, [slug]);
+
+  // Ensure Ctrl+U / View Source auto-refresh works on project detail pages
+  useEffect(() => {
+    window.addEventListener("keydown", triggerCtrlUAutoRefresh, true);
+    return () => {
+      window.removeEventListener("keydown", triggerCtrlUAutoRefresh, true);
+    };
+  }, [slug]);
+
+  // Loading & not-found checks
+  if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-[#003a78] border-t-transparent" />
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 animate-pulse">
+        <div className="h-9 w-44 rounded-xl bg-slate-200 mt-9" />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-6">
+          <div className="lg:col-span-7 flex flex-col gap-6">
+            <div className="h-10 w-2/3 rounded-xl bg-slate-200" />
+            <div className="h-5 w-1/2 rounded-lg bg-slate-200" />
+            <div className="h-28 w-full rounded-2xl bg-slate-200" />
+            <div className="h-44 w-full rounded-2xl bg-slate-200" />
+          </div>
+          <div className="lg:col-span-5 flex flex-col gap-6">
+            <div className="aspect-video w-full rounded-2xl bg-slate-200" />
+            <div className="h-44 w-full rounded-2xl bg-slate-200" />
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (!project) {
+    return (
+      <div className="min-h-[75vh] flex flex-col items-center justify-center text-center px-4">
+        <h1 className="font-serif font-black text-3xl text-slate-900 mb-3">
+          Project Not Found
+        </h1>
+        <p className="text-slate-500 text-sm mb-6">
+          The requested project could not be found.
+        </p>
+        <button
+          onClick={() => navigate("/projects")}
+          className="bg-[#003B72] hover:bg-[#1A67A4] text-white text-xs font-bold py-2.5 px-6 rounded-xl uppercase tracking-wider cursor-pointer"
+        >
+          Back to Projects
+        </button>
       </div>
     );
   }
@@ -186,9 +231,9 @@ export default function ProjectDetailView() {
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 mt-6">
         {/* Left Side: Dynamic Specs and Brochure Text */}
         <motion.div
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
+          initial={{ opacity: 0.9, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="lg:col-span-7 flex flex-col gap-6"
         >
           <div>
@@ -356,9 +401,9 @@ export default function ProjectDetailView() {
 
         {/* Right Side: Image slider gallery & mortgage EMI calculator */}
         <motion.div
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          initial={{ opacity: 0.9, y: 8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
           className="lg:col-span-5 flex flex-col gap-6"
         >
           {/* Main Visual Render display */}
@@ -368,8 +413,11 @@ export default function ProjectDetailView() {
               <img
                 src={images[current]}
                 alt={project.name}
+                loading="eager"
+                decoding="async"
+                fetchPriority="high"
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-contain transition-all duration-500"
+                className="w-full h-full object-contain transition-all duration-300"
               />
 
               {/* Overlay */}

@@ -127,7 +127,7 @@ export default function ProjectsView() {
                 }`}
               >
                 <button
-                  onClick={() => navigate(`/${proj.slug}`)}
+                  onClick={() => navigate(`/projects/${proj.slug}`)}
                   className="text-xs text-blue-500 font-bold hover:text-blue-400 uppercase tracking-wider font-mono cursor-pointer"
                 >
                   Explore Details →

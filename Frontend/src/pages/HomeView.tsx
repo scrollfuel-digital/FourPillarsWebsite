@@ -34,7 +34,7 @@ export default function HomeView() {
     useOutletContext<HomeViewProps>();
   const navigate = useNavigate();
 
-  const onSelectProject = (slug: string) => navigate(`/${slug}`);
+  const onSelectProject = (slug: string) => navigate(`/projects/${slug}`);
   const onChangeRoute = (route: string) => navigate(`/${route}`);
 
   const activeProjects = PROJECTS.filter((p) => p.type !== "upcoming");

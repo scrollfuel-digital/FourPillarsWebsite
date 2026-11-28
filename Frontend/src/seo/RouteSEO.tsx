@@ -83,28 +83,31 @@ export default function RouteSEO() {
   }
 
   // Page-wise SEO data
-  const pageTitle =
+  const pageTitle = (
     projectConfig?.title ??
     (project
       ? `${project.name} | Residential Plots in Nagpur | 4 Pillars Realty`
       : undefined) ??
     staticConfig?.title ??
-    "Residential Projects in Nagpur | 4 Pillars Realty";
+    "Residential Projects in Nagpur | 4 Pillars Realty"
+  ).trim();
 
-  const description =
+  const description = (
     projectConfig?.description ??
     project?.description ??
     staticConfig?.description ??
-    "Explore residential plots and apartments by 4 Pillars Realty in Nagpur.";
+    "Explore residential plots and apartments by 4 Pillars Realty in Nagpur."
+  ).trim();
 
-  const keyword =
+  const keyword = (
     projectConfig?.keyword ??
     staticConfig?.keyword ??
-    "Residential plots in Nagpur";
+    "Residential plots in Nagpur"
+  ).trim();
 
   const canonicalPath =
     projectConfig?.path ??
-    (slug ? `/${slug}` : undefined) ??
+    (slug ? `/projects/${slug}` : undefined) ??
     staticConfig?.path ??
     pathname;
 
@@ -121,7 +124,7 @@ export default function RouteSEO() {
   const schemaData = {
     "@context": "https://schema.org",
     "@type": "RealEstateAgent",
-    "@id": "https://4pillarsrealty.com/#business",
+    "@id": `${SITE_URL}/#business`,
     name: "4 Pillars Realty",
     url: canonicalUrl,
     logo: `${SITE_URL}/logo.png`,
